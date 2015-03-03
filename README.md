@@ -1,5 +1,5 @@
 # cargo-bot
-# Aim to play with Rust Lang
+The aim to play with Rust Lang
 
 
 
