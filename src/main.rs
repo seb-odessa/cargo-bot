@@ -1,10 +1,6 @@
 #![feature(box_syntax)]
 #![feature(alloc)]
 
-use std::rc::Rc;
-use std::rc::Weak;
-use std::cell::RefCell;
-
 
 mod backend {
 	use std::rc::Rc;
@@ -33,7 +29,6 @@ mod backend {
 
 		#[allow(dead_code)]
 	    pub fn print(&self) -> () {
-    		println!("DEMO id : {}, link : {:?}", self.id, self.link);
     		match self.link {
     			Some(ref weak) => println!("DEMO id : {}, Some : {:?}", self.id, weak.upgrade().unwrap()),
     			None => println!("DEMO id : {}, Some : None", self.id),
