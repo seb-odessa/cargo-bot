@@ -53,9 +53,13 @@ fn main() {
     let cell2 = backend::GridCell::new(2);
     println!("DEMO {:?}", cell2);
     cell1.borrow_mut().link = Some(cell2.downgrade());
+    let cell3 = backend::GridCell::new(3);
+    println!("DEMO {:?}", cell3);
+    cell2.borrow_mut().link = Some(cell3.downgrade());
     
    	cell1.borrow().print();
    	cell2.borrow().print();
+   	cell3.borrow().print();
 
     //println!("DEMO {:?}", Some().upgrade().unwrap());
 
