@@ -3,3 +3,12 @@
 name = "cargo-bot"
 version = "0.0.1"
 authors = ["seb <seb@ukr.net>"]
+
+[lib]
+name = "container"
+path = "src/container.rs"
+
+
+[[bin]]
+name = "cargo-bot"
+path = "src/main.rs"
