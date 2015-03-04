@@ -10,20 +10,21 @@ mod backend {
 	#[allow(dead_code)] #[derive(Debug)]
 	pub enum Content { Empty, Bot, Cargo, Dock, Checkpoint }
 
-	type GridCellRc = Rc<RefCell<GridCell>>;
-	type GridCellWeak = Option<Weak<RefCell<GridCell>>>;
+	type GridCellHolder = RefCell<GridCell>;
+	type GridCellHeapPtr = Rc<GridCellHolder>;
+	type GridCellNextPtr = Option<Weak<GridCellHolder>>;
  	//let shared_map: Rc<RefCell<_>> = Rc::new(RefCell::new(HashMap::new()));
 	#[allow(dead_code)] #[derive(Debug)]
 	pub struct GridCell 
 	{
 		pub id			: usize,
-		pub link		: GridCellWeak,
+		pub link		: GridCellNextPtr,
 	}
 
 	impl GridCell 
 	{
 		#[allow(dead_code)]
-	    pub fn new(id:usize) -> GridCellRc {
+	    pub fn new(id:usize) -> GridCellHeapPtr {
 	    	Rc::new( RefCell::new ( GridCell { id : id,	link : None } ) ) 
 	    }
 
@@ -34,7 +35,6 @@ mod backend {
     			None => println!("DEMO id : {}, Some : None", self.id),
     		};
 	    }
-
 	}
 }
 
