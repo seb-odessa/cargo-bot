@@ -7,24 +7,22 @@ mod backend {
 	use std::rc::Weak;
 	use std::cell::RefCell;
 
-	#[allow(dead_code)] #[derive(Debug)]
-	pub enum Content { Empty, Bot, Cargo, Dock, Checkpoint }
 
-	type GridCellHolder = RefCell<GridCell>;
-	type GridCellHeapPtr = Rc<GridCellHolder>;
-	type GridCellNextPtr = Option<Weak<GridCellHolder>>;
- 	//let shared_map: Rc<RefCell<_>> = Rc::new(RefCell::new(HashMap::new()));
+	type GridCellWrapper = RefCell<GridCell>;
+	type GridCellRc = Rc<GridCellWrapper>;
+	type GridCellLink = Option<Weak<GridCellWrapper>>;
+
 	#[allow(dead_code)] #[derive(Debug)]
-	pub struct GridCell 
+	pub struct GridCell
 	{
 		pub id			: usize,
-		pub link		: GridCellNextPtr,
+		pub link		: GridCellLink,
 	}
 
-	impl GridCell 
+	impl GridCell
 	{
 		#[allow(dead_code)]
-	    pub fn new(id:usize) -> GridCellHeapPtr {
+	    pub fn new(id:usize) -> GridCellRc {
 	    	Rc::new( RefCell::new ( GridCell { id : id,	link : None } ) ) 
 	    }
 
@@ -35,32 +33,34 @@ mod backend {
     			None => println!("DEMO id : {}, Some : None", self.id),
     		};
 	    }
+
+   		#[allow(dead_code)]
+	    pub fn link(lhv : GridCellRc, rhv : GridCellRc) -> () {
+	    	{
+	    		lhv.borrow_mut().link = Some(rhv.downgrade());
+	    	};
+	    	{
+	    		rhv.borrow_mut().link = Some(lhv.downgrade());
+	    	};
+	    }
+
 	}
 }
 
-extern crate container;
 fn main() {
-    println!("Hello, world!");
-
-    let mut link = container::Node::new(1);
-    link.append(2);
-    link.append(3);
-    println!("The Link: {:?}", link);
-
-
-    let cell1 = backend::GridCell::new(1);
-    println!("DEMO {:?}", cell1);
-    let cell2 = backend::GridCell::new(2);
-    println!("DEMO {:?}", cell2);
-    cell1.borrow_mut().link = Some(cell2.downgrade());
+    let cell1 = backend::GridCell::new(1);    
+    let cell2 = backend::GridCell::new(2);    
     let cell3 = backend::GridCell::new(3);
-    println!("DEMO {:?}", cell3);
-    cell2.borrow_mut().link = Some(cell3.downgrade());
-    
+        
    	cell1.borrow().print();
    	cell2.borrow().print();
    	cell3.borrow().print();
 
-    //println!("DEMO {:?}", Some().upgrade().unwrap());
+	cell1.borrow_mut().link = Some(cell2.downgrade());
+    cell2.borrow_mut().link = Some(cell3.downgrade());
+    
 
+   	cell1.borrow().print();
+   	cell2.borrow().print();
+   	cell3.borrow().print();
  }
