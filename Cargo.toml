@@ -5,8 +5,8 @@ version = "0.0.1"
 authors = ["seb <seb@ukr.net>"]
 
 [lib]
-name = "container"
-path = "src/container.rs"
+name = "lib"
+path = "src/lib/lib.rs"
 
 
 [[bin]]
