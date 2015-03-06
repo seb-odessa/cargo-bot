@@ -22,7 +22,7 @@ macro_rules! fmt_id{
     )
 }
 
-macro_rules! get_link{
+macro_rules! try_upgrade{
     ($expr:expr) => (
     	match $expr {
     		Some(ref weak) => weak.upgrade(),
@@ -35,7 +35,7 @@ impl fmt::Display for GridCell {
 	#[allow(unused_must_use)]
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
     	let north = fmt_id![*self.north.borrow()];
-    	let south = fmt_id![*self.north.borrow()];
+    	let south = fmt_id![*self.south.borrow()];
     	let east  = fmt_id![*self.east.borrow()];
     	let west  = fmt_id![*self.west.borrow()];
     	write!(f, "({}, north=>{}, south=>{}, east=>{}, west=>{})", self.id, north, south, east, west)
@@ -56,25 +56,42 @@ impl GridCell {
 
 	#[allow(dead_code)]
     pub fn link_north(&self, rhv: Weak<GridCell>) -> () { (*self.north.borrow_mut()) = Some(rhv); }
-
 	#[allow(dead_code)]
     pub fn link_south(&self, rhv: Weak<GridCell>) -> () { (*self.south.borrow_mut()) = Some(rhv); }
+	#[allow(dead_code)]
+    pub fn link_east(&self, rhv: Weak<GridCell>) -> () { (*self.east.borrow_mut()) = Some(rhv); }
+	#[allow(dead_code)]
+    pub fn link_west(&self, rhv: Weak<GridCell>) -> () { (*self.west.borrow_mut()) = Some(rhv); }
 
 	#[allow(dead_code)]
-    pub fn link_east(&self, rhv: Weak<GridCell>) -> () {  (*self.east.borrow_mut()) = Some(rhv);  }
-
+    pub fn get_north(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.north.borrow()] }
 	#[allow(dead_code)]
-    pub fn link_west(&self, rhv: Weak<GridCell>) -> () {  (*self.west.borrow_mut()) = Some(rhv);  }
-
+    pub fn get_south(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.south.borrow()] }
 	#[allow(dead_code)]
-    pub fn get_north(&self) -> Option<Rc<GridCell>> { get_link![*self.north.borrow()] }
-
+    pub fn get_east(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.east.borrow()] }
 	#[allow(dead_code)]
-    pub fn get_south(&self) -> Option<Rc<GridCell>> { get_link![*self.south.borrow()] }
+    pub fn get_west(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.west.borrow()] }
+}
 
-	#[allow(dead_code)]
-    pub fn get_east(&self) -> Option<Rc<GridCell>> { get_link![*self.east.borrow()] }
+#[test] #[allow(dead_code)]
+pub fn new()
+{
+    let cell = GridCell::new(1);
+    assert!(1 == cell.id);
+    assert!((*cell.north.borrow()).is_none());
+    assert!((*cell.south.borrow()).is_none());
+    assert!((*cell.east.borrow()).is_none());
+    assert!((*cell.west.borrow()).is_none());   
+}
 
-	#[allow(dead_code)]
-    pub fn get_west(&self) -> Option<Rc<GridCell>> { get_link![*self.west.borrow()] }
+#[test] #[allow(dead_code)]
+pub fn link_north()
+{
+    let cell1 = Rc::new(GridCell::new(1));
+    let cell2 = Rc::new(GridCell::new(2));
+    cell1.link_north(cell2.downgrade());
+    assert![(*cell1.north.borrow()).is_some()];
+    assert![(*cell1.south.borrow()).is_none()];
+    assert![(*cell1.east.borrow()).is_none()];
+    assert![(*cell1.west.borrow()).is_none()];
 }
