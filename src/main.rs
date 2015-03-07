@@ -2,10 +2,9 @@
 #![feature(alloc)]
 
 use std::rc::Rc;
+use lib::gridcell::GridCell;
 
 extern crate lib;
-
-use lib::gridcell::GridCell;
 
 #[allow(dead_code)]
 fn main() {
@@ -24,6 +23,15 @@ fn main() {
 		let cell3 = cell1.get_north();
 		println!("{}", cell3.unwrap());
 	}
-	
-
- }
+// 	{
+//  use std::sync::TaskPool;
+// 	use std::iter::AdditiveIterator;
+// 	use std::old_io::process::Command;
+// 		let pool = TaskPool::new(8);
+// 		for i in range(0, 1000)		
+// 		{
+// 		    pool.execute(move|| {println!("{}", Gen::get());});
+// 		}
+// 		let _process = Command::new("sleep").arg("2").spawn();	    
+// 	}
+}

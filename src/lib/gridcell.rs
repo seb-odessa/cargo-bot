@@ -44,9 +44,9 @@ impl fmt::Display for GridCell {
 
 impl GridCell {
 	#[allow(dead_code)]
-    pub fn new(id:usize) -> GridCell {
+    pub fn new(id : usize) -> GridCell {
     	GridCell { 
-    		id : id,
+    		id    : id,
     		north : RefCell::new(None),
     		south : RefCell::new(None),
     		east  : RefCell::new(None),
