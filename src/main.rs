@@ -3,6 +3,7 @@
 
 use std::rc::Rc;
 use lib::gridcell::GridCell;
+use lib::gridmap::GridMap;
 
 extern crate lib;
 
@@ -14,24 +15,14 @@ fn main() {
 	{
 		cell1.link_north(cell2.downgrade());
 		cell2.link_south(cell1.downgrade());
-	}
-	{
 		println!("{}", cell1);
 		println!("{}", cell2);
 	}
-	{
-		let cell3 = cell1.get_north();
-		println!("{}", cell3.unwrap());
-	}
-// 	{
-//  use std::sync::TaskPool;
-// 	use std::iter::AdditiveIterator;
-// 	use std::old_io::process::Command;
-// 		let pool = TaskPool::new(8);
-// 		for i in range(0, 1000)		
-// 		{
-// 		    pool.execute(move|| {println!("{}", Gen::get());});
-// 		}
-// 		let _process = Command::new("sleep").arg("2").spawn();	    
-// 	}
+
+	let grid = GridMap::new();
+	grid.add_cell(cell1);
+	grid.add_cell(cell2);
+	grid.link_cells(1,2);
+	println!("cell1: {}", *grid.map.borrow().get(&1).unwrap());
+
 }
