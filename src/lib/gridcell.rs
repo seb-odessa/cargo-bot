@@ -1,32 +1,23 @@
-use std::rc::Rc;
-use std::rc::Weak;
 use std::cell::RefCell;
 use std::fmt;
+
+pub type CellId = usize;
 
 #[allow(dead_code)] 
 #[derive(Debug)]	
 pub struct GridCell	{
-	pub id			: usize,
-	pub north		: RefCell<Option<Weak<GridCell>>>,
-	pub south		: RefCell<Option<Weak<GridCell>>>,
-	pub east		: RefCell<Option<Weak<GridCell>>>,
-	pub west		: RefCell<Option<Weak<GridCell>>>,
+	pub id			: CellId,
+	pub north		: RefCell<Option<CellId>>,
+	pub south		: RefCell<Option<CellId>>,
+	pub east		: RefCell<Option<CellId>>,
+	pub west		: RefCell<Option<CellId>>,
 }
 
 macro_rules! fmt_id{
     ($expr:expr) => (
     	match $expr {
-    		Some(ref exist) => format!("{}", exist.upgrade().unwrap().id), 
+    		Some(ref cell) => format!("{}", cell), 
     		None => "None".to_string() 
-    	}
-    )
-}
-
-macro_rules! try_upgrade{
-    ($expr:expr) => (
-    	match $expr {
-    		Some(ref weak) => weak.upgrade(),
-    		None => None
     	}
     )
 }
@@ -44,7 +35,7 @@ impl fmt::Display for GridCell {
 
 impl GridCell {
 	#[allow(dead_code)]
-    pub fn new(id : usize) -> GridCell {
+    pub fn new(id : CellId) -> GridCell {
     	GridCell { 
     		id    : id,
     		north : RefCell::new(None),
@@ -55,43 +46,65 @@ impl GridCell {
     }
 
 	#[allow(dead_code)]
-    pub fn link_north(&self, rhv: Weak<GridCell>) -> () { (*self.north.borrow_mut()) = Some(rhv); }
+    pub fn link_north(&self, rhv: &GridCell) -> () { (*self.north.borrow_mut()) = Some(rhv.id); }
 	#[allow(dead_code)]
-    pub fn link_south(&self, rhv: Weak<GridCell>) -> () { (*self.south.borrow_mut()) = Some(rhv); }
+    pub fn link_south(&self, rhv: &GridCell) -> () { (*self.south.borrow_mut()) = Some(rhv.id); }
 	#[allow(dead_code)]
-    pub fn link_east(&self, rhv: Weak<GridCell>) -> () { (*self.east.borrow_mut()) = Some(rhv); }
+    pub fn link_east(&self, rhv: &GridCell) -> () { (*self.east.borrow_mut()) = Some(rhv.id); }
 	#[allow(dead_code)]
-    pub fn link_west(&self, rhv: Weak<GridCell>) -> () { (*self.west.borrow_mut()) = Some(rhv); }
+    pub fn link_west(&self, rhv: &GridCell) -> () { (*self.west.borrow_mut()) = Some(rhv.id); }
 
 	#[allow(dead_code)]
-    pub fn get_north(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.north.borrow()] }
+    pub fn get_north(&self) -> Option<CellId> { *self.north.borrow() }
 	#[allow(dead_code)]
-    pub fn get_south(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.south.borrow()] }
+    pub fn get_south(&self) -> Option<CellId> { *self.south.borrow() }
 	#[allow(dead_code)]
-    pub fn get_east(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.east.borrow()] }
+    pub fn get_east(&self) -> Option<CellId> { *self.east.borrow() }
 	#[allow(dead_code)]
-    pub fn get_west(&self) -> Option<Rc<GridCell>> { try_upgrade![*self.west.borrow()] }
+    pub fn get_west(&self) -> Option<CellId> { *self.west.borrow() }
 }
 
-#[test] #[allow(dead_code)]
-pub fn new()
-{
-    let cell = GridCell::new(1);
-    assert!(1 == cell.id);
-    assert!((*cell.north.borrow()).is_none());
-    assert!((*cell.south.borrow()).is_none());
-    assert!((*cell.east.borrow()).is_none());
-    assert!((*cell.west.borrow()).is_none());   
+#[cfg(test)]
+mod tests {
+    #[test] 
+    pub fn new()
+    {
+        let cell = ::GridCell::new(1);
+        assert!(1 == cell.id);
+        assert!((*cell.north.borrow()).is_none());
+        assert!((*cell.south.borrow()).is_none());
+        assert!((*cell.east.borrow()).is_none());
+        assert!((*cell.west.borrow()).is_none());   
+    }
+
+    #[test] #[allow(dead_code)]
+    pub fn link_north()
+    {
+        let cell = ::GridCell::new(1);
+        cell.link_north(&::GridCell::new(2));
+        assert![(*cell.north.borrow()).unwrap() == 2];
+    } 
+    #[test] #[allow(dead_code)]
+    pub fn link_south()
+    {
+        let cell = ::GridCell::new(1);
+        cell.link_south(&::GridCell::new(2));
+        assert![(*cell.south.borrow()).unwrap() == 2];
+    }
+    #[test] #[allow(dead_code)]
+    pub fn link_east()
+    {
+        let cell = ::GridCell::new(1);
+        cell.link_east(&::GridCell::new(2));
+        assert![(*cell.east.borrow()).unwrap() == 2];
+    }
+    #[test] #[allow(dead_code)]
+    pub fn link_west()
+    {
+        let cell = ::GridCell::new(1);
+        cell.link_west(&::GridCell::new(2));
+        assert![(*cell.west.borrow()).unwrap() == 2];
+    }
 }
 
-#[test] #[allow(dead_code)]
-pub fn link_north()
-{
-    let cell1 = Rc::new(GridCell::new(1));
-    let cell2 = Rc::new(GridCell::new(2));
-    cell1.link_north(cell2.downgrade());
-    assert![(*cell1.north.borrow()).is_some()];
-    assert![(*cell1.south.borrow()).is_none()];
-    assert![(*cell1.east.borrow()).is_none()];
-    assert![(*cell1.west.borrow()).is_none()];
-}
+
