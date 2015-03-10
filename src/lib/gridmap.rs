@@ -56,7 +56,7 @@ impl GridMap {
 	#[allow(dead_code)]
 	pub fn print_map(&self){
 		for (key, cell) in self.map.borrow().iter() {
- 			println!("{}: {}", key, cell);
+				println!("{}: {}", key, cell);
 		}
 	}
 
@@ -67,27 +67,27 @@ impl GridMap {
 		// Add all cells to the map
 		for cell in map.cells.iter() {
 			self.add_cell(Rc::new(GridCell::new(cell.id)));
-        	println!("The cell {} was added to the map.", cell.id);
-    	}
-    	// Link all cells in the map
-    	for cell in map.cells.iter() {
-    		if cell.north > 0 {
+	    	println!("The cell {} was added to the map.", cell.id);
+		}
+		// Link all cells in the map
+		for cell in map.cells.iter() {
+			if cell.north > 0 {
 				self.add_neighbor(cell.id, cell.north, Neighbor::North);
 				println!("For the cell {} was added NORTH neighbor {}.", cell.id, cell.north);
-    		}
-    		if cell.south > 0 {
+			}
+			if cell.south > 0 {
 				self.add_neighbor(cell.id, cell.south, Neighbor::South);
 				println!("For the cell {} was added SOUTH neighbor {}.", cell.id, cell.south);
-    		}
-    		if cell.west > 0 {
+			}
+			if cell.west > 0 {
 				self.add_neighbor(cell.id, cell.west, Neighbor::West);
 				println!("For the cell {} was added WEST neighbor {}.", cell.id, cell.west);
-    		}
-    		if cell.east > 0 {
+			}
+			if cell.east > 0 {
 				self.add_neighbor(cell.id, cell.east, Neighbor::East);
 				println!("For the cell {} was added EAST neighbor {}.", cell.id, cell.east);
-    		}
-    	}
+			}
+		}
 	}
 
 }
