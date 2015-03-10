@@ -9,8 +9,6 @@ use lib::maploader::Map;
 fn main(){
 
 	let map : Map = Map::load_map("maps/flat_map_3x3.json");
- 	println!("The map : {:?}", map);
-
  	let grid : GridMap = GridMap::new();
  	grid.load_map(&map);
  	grid.print_map();

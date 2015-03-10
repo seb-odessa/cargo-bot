@@ -67,7 +67,7 @@ impl GridMap {
 		// Add all cells to the map
 		for cell in map.cells.iter() {
 			self.add_cell(Rc::new(GridCell::new(cell.id)));
-	    	println!("The cell {} was added to the map.", cell.id);
+			println!("The cell {} was added to the map.", cell.id);
 		}
 		// Link all cells in the map
 		for cell in map.cells.iter() {

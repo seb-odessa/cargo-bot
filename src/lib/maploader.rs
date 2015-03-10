@@ -38,7 +38,7 @@ impl Map {
         let mut s = String::new();
         match file.read_to_string(&mut s) {
             Err(why) => panic!("couldn't read {}: {}", display, why.description()),
-            Ok(_) => print!("{} contains:\n{}", display, s),
+            Ok(_) => println!("{} contains:\n{}", display, s),
         }
 
         let map : Map = match json::decode(&s[..]) {
