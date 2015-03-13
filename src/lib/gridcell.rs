@@ -4,6 +4,10 @@ use std::fmt;
 pub type CellId = usize;
 
 #[allow(dead_code)] 
+#[derive(Debug)]
+pub enum Neighbor{ North, South, East, West }
+
+#[allow(dead_code)] 
 #[derive(Debug)]	
 pub struct GridCell	{
 	pub id			: CellId,
@@ -34,7 +38,8 @@ impl fmt::Display for GridCell {
 }
 
 impl GridCell {
-	#[allow(dead_code)]
+
+	#[allow(dead_code)]    
     pub fn new(id : CellId) -> GridCell {
     	GridCell { 
     		id    : id,
@@ -45,31 +50,35 @@ impl GridCell {
     	} 
     }
 
-	#[allow(dead_code)]
-    pub fn link_north(&self, rhv: &GridCell) -> () { (*self.north.borrow_mut()) = Some(rhv.id); }
-	#[allow(dead_code)]
-    pub fn link_south(&self, rhv: &GridCell) -> () { (*self.south.borrow_mut()) = Some(rhv.id); }
-	#[allow(dead_code)]
-    pub fn link_east(&self, rhv: &GridCell) -> () { (*self.east.borrow_mut()) = Some(rhv.id); }
-	#[allow(dead_code)]
-    pub fn link_west(&self, rhv: &GridCell) -> () { (*self.west.borrow_mut()) = Some(rhv.id); }
+    #[allow(dead_code)]
+    pub fn add_neighbor(&self, dir: Neighbor, id: CellId) -> () { 
+        match dir {
+            Neighbor::North => (*self.north.borrow_mut()) = Some(id),
+            Neighbor::South => (*self.south.borrow_mut()) = Some(id),
+            Neighbor::East => (*self.east.borrow_mut()) = Some(id),
+            Neighbor::West => (*self.west.borrow_mut()) = Some(id),
+        }
+    }
 
-	#[allow(dead_code)]
-    pub fn get_north(&self) -> Option<CellId> { *self.north.borrow() }
-	#[allow(dead_code)]
-    pub fn get_south(&self) -> Option<CellId> { *self.south.borrow() }
-	#[allow(dead_code)]
-    pub fn get_east(&self) -> Option<CellId> { *self.east.borrow() }
-	#[allow(dead_code)]
-    pub fn get_west(&self) -> Option<CellId> { *self.west.borrow() }
+    #[allow(dead_code)]
+    pub fn get_neighbor(&self, dir: Neighbor) -> Option<CellId> { 
+        match dir {
+            Neighbor::North => *self.north.borrow(),
+            Neighbor::South => *self.south.borrow(),
+            Neighbor::East => *self.east.borrow(),
+            Neighbor::West => *self.west.borrow(),
+        }
+    }
 }
 
 #[cfg(test)]
 mod tests {
+    use gridcell::GridCell;
+    use gridcell::Neighbor;
     #[test] 
     pub fn new()
     {
-        let cell = ::GridCell::new(1);
+        let cell = GridCell::new(1);
         assert!(1 == cell.id);
         assert!((*cell.north.borrow()).is_none());
         assert!((*cell.south.borrow()).is_none());
@@ -78,32 +87,67 @@ mod tests {
     }
 
     #[test] #[allow(dead_code)]
-    pub fn link_north()
+    pub fn add_neighbor_north()
     {
-        let cell = ::GridCell::new(1);
-        cell.link_north(&::GridCell::new(2));
+        let cell = GridCell::new(1);
+        cell.add_neighbor(Neighbor::North, GridCell::new(2).id);
         assert![(*cell.north.borrow()).unwrap() == 2];
     } 
+
     #[test] #[allow(dead_code)]
-    pub fn link_south()
+    pub fn add_neighbor_south()
     {
-        let cell = ::GridCell::new(1);
-        cell.link_south(&::GridCell::new(2));
+        let cell = GridCell::new(1);
+        cell.add_neighbor(Neighbor::South, GridCell::new(2).id);
         assert![(*cell.south.borrow()).unwrap() == 2];
     }
+
     #[test] #[allow(dead_code)]
-    pub fn link_east()
+    pub fn add_neighbor_east()
     {
         let cell = ::GridCell::new(1);
-        cell.link_east(&::GridCell::new(2));
+        cell.add_neighbor(Neighbor::East, GridCell::new(2).id);
         assert![(*cell.east.borrow()).unwrap() == 2];
     }
+
     #[test] #[allow(dead_code)]
-    pub fn link_west()
+    pub fn add_neighbor_west()
     {
         let cell = ::GridCell::new(1);
-        cell.link_west(&::GridCell::new(2));
+        cell.add_neighbor(Neighbor::West, GridCell::new(2).id);
         assert![(*cell.west.borrow()).unwrap() == 2];
+    }
+
+    #[test] #[allow(dead_code)]
+    pub fn get_neighbor_north()
+    {
+        let cell = GridCell::new(1);
+        (*cell.north.borrow_mut()) = Some(2);
+        assert![cell.get_neighbor(Neighbor::North).unwrap() == 2];
+    } 
+
+    #[test] #[allow(dead_code)]
+    pub fn get_neighbor_south()
+    {
+        let cell = GridCell::new(1);
+        (*cell.south.borrow_mut()) = Some(2);
+        assert![cell.get_neighbor(Neighbor::South).unwrap() == 2];
+    }
+
+    #[test] #[allow(dead_code)]
+    pub fn get_neighbor_east()
+    {
+        let cell = ::GridCell::new(1);
+        (*cell.east.borrow_mut()) = Some(2);
+        assert![cell.get_neighbor(Neighbor::East).unwrap() == 2];
+    }
+    
+    #[test] #[allow(dead_code)]
+    pub fn get_neighbor_west()
+    {
+        let cell = ::GridCell::new(1);
+        (*cell.west.borrow_mut()) = Some(2);
+        assert![cell.get_neighbor(Neighbor::West).unwrap() == 2];
     }
 }
 

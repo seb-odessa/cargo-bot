@@ -4,14 +4,9 @@ use std::collections::BTreeMap;
 
 use gridcell::CellId;
 use gridcell::GridCell;
+use gridcell::Neighbor;
 use maploader::Map;
 
-
-#[allow(dead_code)] 
-#[derive(Debug)]
-pub enum Neighbor{
-	North, South, East, West,
-}
 
 #[allow(dead_code)] 
 #[derive(Debug)]
@@ -31,25 +26,20 @@ impl GridMap {
 	}
 
 	#[allow(dead_code)]
-	fn add_neighbor(&self, lhv : usize, rhv : usize, dir : Neighbor) -> () {
+	fn add_neighbor(&self, lhv : CellId, rhv : CellId, neighbor : Neighbor) -> () {
 		// link neighbor according to direction
 		self.ensure_exist(lhv);
 		self.ensure_exist(rhv);
-		match dir {
-			Neighbor::North => self.map.borrow().get(&lhv).unwrap().link_north(self.map.borrow().get(&rhv).unwrap()),
-			Neighbor::South => self.map.borrow().get(&lhv).unwrap().link_south(self.map.borrow().get(&rhv).unwrap()),
-			Neighbor::East => self.map.borrow().get(&lhv).unwrap().link_east(self.map.borrow().get(&rhv).unwrap()),
-			Neighbor::West => self.map.borrow().get(&lhv).unwrap().link_west(self.map.borrow().get(&rhv).unwrap()),
-		}
+		self.map.borrow().get(&lhv).unwrap().add_neighbor(neighbor, rhv);
 	}
 
 	#[allow(dead_code)]
-	fn ensure_exist(&self, id : usize) -> () {
+	fn ensure_exist(&self, id : CellId) -> () {
 		assert_eq!(self.map.borrow().contains_key(&id), true);
 	}
 
 	#[allow(dead_code)]
-	fn ensure_new(&self, id : usize) -> () {
+	fn ensure_new(&self, id : CellId) -> () {
 		assert_eq!(self.map.borrow().contains_key(&id), false);
 	}
 
@@ -89,15 +79,14 @@ impl GridMap {
 			}
 		}
 	}
-
 }
 
 #[cfg(test)]
 mod tests {
 	use std::rc::Rc;
 	use gridcell::GridCell;
+	use gridcell::Neighbor;
 	use gridmap::GridMap;
-	use gridmap::Neighbor;
 
 	#[test] 
 	pub fn new() {
@@ -130,7 +119,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::North);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_north().unwrap(), 2);
+		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::North).unwrap(), 2);
 	}
 
 	#[test]
@@ -139,7 +128,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::South);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_south().unwrap(), 2);
+		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::South).unwrap(), 2);
 	}
 
 	#[test]
@@ -148,7 +137,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::East);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_east().unwrap(), 2);
+		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::East).unwrap(), 2);
 	}
 
 	#[test]
@@ -157,7 +146,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::West);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_west().unwrap(), 2);
+		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::West).unwrap(), 2);
 	}
 }
 
@@ -180,5 +169,4 @@ mod panic {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.ensure_new(1);
 	}
-
 }
