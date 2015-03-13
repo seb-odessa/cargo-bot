@@ -3,11 +3,9 @@ use std::fmt;
 
 pub type CellId = usize;
 
-#[allow(dead_code)] 
 #[derive(Debug)]
 pub enum Neighbor{ North, South, East, West }
 
-#[allow(dead_code)] 
 #[derive(Debug)]	
 pub struct GridCell	{
 	pub id			: CellId,
