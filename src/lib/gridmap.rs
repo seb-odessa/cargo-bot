@@ -11,18 +11,38 @@ use maploader::Map;
 #[allow(dead_code)] 
 #[derive(Debug)]
 pub struct GridMap	{
-	pub map			: RefCell<BTreeMap<CellId, Rc<GridCell>>>,
+	pub cells			: RefCell<BTreeMap<CellId, Rc<GridCell>>>,
 }
 impl GridMap {
 	#[allow(dead_code)] 
 	pub fn new() -> GridMap {
-		GridMap { map : RefCell::new(BTreeMap::new()) } 
+		GridMap { cells : RefCell::new(BTreeMap::new()) } 
+	}
+
+	#[allow(dead_code)] 
+	pub fn load(map : &Map) -> GridMap {
+		let grid = GridMap::new();
+		grid.load_map(map);
+		return grid;
+	}
+	
+	#[allow(dead_code)]
+	pub fn exist(&self, id : CellId) -> bool {
+		self.cells.borrow().contains_key(&id)
+	}
+
+	#[allow(dead_code)]
+	pub fn find(&self, id : CellId) -> Option<Rc<GridCell>> {
+		match self.cells.borrow().get(&id) {
+			Some(cell) => Some(cell.clone()),
+			None => None,
+		}
 	}
 
 	#[allow(dead_code)]
 	fn add_cell(&self, cell : Rc<GridCell>) {
 		self.ensure_new(cell.id);
-		self.map.borrow_mut().insert(cell.id, cell);		
+		self.cells.borrow_mut().insert(cell.id, cell);		
 	}
 
 	#[allow(dead_code)]
@@ -30,52 +50,52 @@ impl GridMap {
 		// link neighbor according to direction
 		self.ensure_exist(lhv);
 		self.ensure_exist(rhv);
-		self.map.borrow().get(&lhv).unwrap().add_neighbor(neighbor, rhv);
+		self.cells.borrow().get(&lhv).unwrap().add_neighbor(neighbor, rhv);
 	}
 
 	#[allow(dead_code)]
 	fn ensure_exist(&self, id : CellId) -> () {
-		assert_eq!(self.map.borrow().contains_key(&id), true);
+		assert!(self.exist(id));
 	}
 
 	#[allow(dead_code)]
 	fn ensure_new(&self, id : CellId) -> () {
-		assert_eq!(self.map.borrow().contains_key(&id), false);
+		assert!(!self.exist(id));
 	}
 
 	#[allow(dead_code)]
 	pub fn print_map(&self){
-		for (key, cell) in self.map.borrow().iter() {
-				println!("{}: {}", key, cell);
+		for (key, cell) in self.cells.borrow().iter() {
+				println!("{:2}: {}", key, cell);
 		}
 	}
 
 	#[allow(dead_code)]
 	pub fn load_map(&self, map : &Map)
 	{
-		self.map.borrow_mut().clear();
-		// Add all cells to the map
+		self.cells.borrow_mut().clear();
+		// Add all cells to the storage
 		for cell in map.cells.iter() {
 			self.add_cell(Rc::new(GridCell::new(cell.id)));
-			println!("The cell {} was added to the map.", cell.id);
+			// println!("The cell {} was added to the map.", cell.id);
 		}
 		// Link all cells in the map
 		for cell in map.cells.iter() {
 			if cell.north > 0 {
 				self.add_neighbor(cell.id, cell.north, Neighbor::North);
-				println!("For the cell {} was added NORTH neighbor {}.", cell.id, cell.north);
+				// println!("For the cell {} was added NORTH neighbor {}.", cell.id, cell.north);
 			}
 			if cell.south > 0 {
 				self.add_neighbor(cell.id, cell.south, Neighbor::South);
-				println!("For the cell {} was added SOUTH neighbor {}.", cell.id, cell.south);
+				// println!("For the cell {} was added SOUTH neighbor {}.", cell.id, cell.south);
 			}
 			if cell.west > 0 {
 				self.add_neighbor(cell.id, cell.west, Neighbor::West);
-				println!("For the cell {} was added WEST neighbor {}.", cell.id, cell.west);
+				// println!("For the cell {} was added WEST neighbor {}.", cell.id, cell.west);
 			}
 			if cell.east > 0 {
 				self.add_neighbor(cell.id, cell.east, Neighbor::East);
-				println!("For the cell {} was added EAST neighbor {}.", cell.id, cell.east);
+				// println!("For the cell {} was added EAST neighbor {}.", cell.id, cell.east);
 			}
 		}
 	}
@@ -91,14 +111,14 @@ mod tests {
 	#[test] 
 	pub fn new() {
 		let grid = GridMap::new();
-		assert!(grid.map.borrow().is_empty());
+		assert!(grid.cells.borrow().is_empty());
 	}
 
 	#[test] 
 	pub fn add_cell() {
 		let grid = GridMap::new();
 		grid.add_cell(Rc::new(GridCell::new(1)));
-		assert_eq!(grid.map.borrow().len(), 1);
+		assert_eq!(grid.cells.borrow().len(), 1);
 	}
 
 	#[test]
@@ -119,7 +139,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::North);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::North).unwrap(), 2);
+		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::North).unwrap(), 2);
 	}
 
 	#[test]
@@ -128,7 +148,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::South);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::South).unwrap(), 2);
+		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::South).unwrap(), 2);
 	}
 
 	#[test]
@@ -137,7 +157,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::East);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::East).unwrap(), 2);
+		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::East).unwrap(), 2);
 	}
 
 	#[test]
@@ -146,7 +166,7 @@ mod tests {
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		grid.add_cell(Rc::new(GridCell::new(2)));
 		grid.add_neighbor(1, 2, Neighbor::West);
-		assert_eq!(grid.map.borrow().get(&1).unwrap().get_neighbor(Neighbor::West).unwrap(), 2);
+		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::West).unwrap(), 2);
 	}
 }
 

@@ -1,4 +1,4 @@
-use std::cell::RefCell;
+use std::cell::Cell;
 use std::fmt;
 
 pub type CellId = usize;
@@ -6,65 +6,64 @@ pub type CellId = usize;
 #[derive(Debug)]
 pub enum Neighbor{ North, South, East, West }
 
-#[derive(Debug)]	
-pub struct GridCell	{
-	pub id			: CellId,
-	pub north		: RefCell<Option<CellId>>,
-	pub south		: RefCell<Option<CellId>>,
-	pub east		: RefCell<Option<CellId>>,
-	pub west		: RefCell<Option<CellId>>,
+#[derive(Debug)]    
+pub struct GridCell {
+    pub id          : CellId,
+    pub north       : Cell<Option<CellId>>,
+    pub south       : Cell<Option<CellId>>,
+    pub east        : Cell<Option<CellId>>,
+    pub west        : Cell<Option<CellId>>,
 }
 
 macro_rules! fmt_id{
     ($expr:expr) => (
-    	match $expr {
-    		Some(ref cell) => format!("{}", cell), 
-    		None => "None".to_string() 
-    	}
+        match $expr {
+            Some(cell) => format!("{}", cell), 
+            None => "None".to_string() 
+        }
     )
 }
 
 impl fmt::Display for GridCell {
-	#[allow(unused_must_use)]
+    #[allow(unused_must_use)]
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-    	let north = fmt_id![*self.north.borrow()];
-    	let south = fmt_id![*self.south.borrow()];
-    	let east  = fmt_id![*self.east.borrow()];
-    	let west  = fmt_id![*self.west.borrow()];
-    	write!(f, "({}, north=>{}, south=>{}, east=>{}, west=>{})", self.id, north, south, east, west)
+        let north = fmt_id![self.north.get()];
+        let south = fmt_id![self.south.get()];
+        let east  = fmt_id![ self.east.get()];
+        let west  = fmt_id![ self.west.get()];
+        write!(f, "({:4}, north=>{:4}, south=>{:4}, east=>{:4}, west=>{:4})", self.id, north, south, east, west)
     }
 }
 
 impl GridCell {
-
-	#[allow(dead_code)]    
+    #[allow(dead_code)]    
     pub fn new(id : CellId) -> GridCell {
-    	GridCell { 
-    		id    : id,
-    		north : RefCell::new(None),
-    		south : RefCell::new(None),
-    		east  : RefCell::new(None),
-    		west  : RefCell::new(None),
-    	} 
+        GridCell { 
+            id    : id,
+            north : Cell::new(None),
+            south : Cell::new(None),
+            east  : Cell::new(None),
+            west  : Cell::new(None),
+        } 
     }
 
     #[allow(dead_code)]
     pub fn add_neighbor(&self, dir: Neighbor, id: CellId) -> () { 
         match dir {
-            Neighbor::North => (*self.north.borrow_mut()) = Some(id),
-            Neighbor::South => (*self.south.borrow_mut()) = Some(id),
-            Neighbor::East => (*self.east.borrow_mut()) = Some(id),
-            Neighbor::West => (*self.west.borrow_mut()) = Some(id),
+            Neighbor::North => self.north.set(Some(id)),
+            Neighbor::South => self.south.set(Some(id)),
+            Neighbor::East =>  self.east.set(Some(id)),
+            Neighbor::West =>  self.west.set(Some(id)),
         }
     }
 
     #[allow(dead_code)]
     pub fn get_neighbor(&self, dir: Neighbor) -> Option<CellId> { 
         match dir {
-            Neighbor::North => *self.north.borrow(),
-            Neighbor::South => *self.south.borrow(),
-            Neighbor::East => *self.east.borrow(),
-            Neighbor::West => *self.west.borrow(),
+            Neighbor::North => self.north.get(),
+            Neighbor::South => self.south.get(),
+            Neighbor::East =>  self.east.get(),
+            Neighbor::West =>  self.west.get(),
         }
     }
 }
@@ -77,11 +76,11 @@ mod tests {
     pub fn new()
     {
         let cell = GridCell::new(1);
-        assert!(1 == cell.id);
-        assert!((*cell.north.borrow()).is_none());
-        assert!((*cell.south.borrow()).is_none());
-        assert!((*cell.east.borrow()).is_none());
-        assert!((*cell.west.borrow()).is_none());   
+        assert![1 == cell.id];
+        assert![cell.north.get().is_none()];
+        assert![cell.south.get().is_none()];
+        assert![cell.east.get().is_none()];
+        assert![cell.west.get().is_none()];
     }
 
     #[test] #[allow(dead_code)]
@@ -89,7 +88,7 @@ mod tests {
     {
         let cell = GridCell::new(1);
         cell.add_neighbor(Neighbor::North, GridCell::new(2).id);
-        assert![(*cell.north.borrow()).unwrap() == 2];
+        assert![cell.north.get().unwrap() == 2];
     } 
 
     #[test] #[allow(dead_code)]
@@ -97,7 +96,7 @@ mod tests {
     {
         let cell = GridCell::new(1);
         cell.add_neighbor(Neighbor::South, GridCell::new(2).id);
-        assert![(*cell.south.borrow()).unwrap() == 2];
+        assert![cell.south.get().unwrap() == 2];
     }
 
     #[test] #[allow(dead_code)]
@@ -105,7 +104,7 @@ mod tests {
     {
         let cell = ::GridCell::new(1);
         cell.add_neighbor(Neighbor::East, GridCell::new(2).id);
-        assert![(*cell.east.borrow()).unwrap() == 2];
+        assert![cell.east.get().unwrap() == 2];
     }
 
     #[test] #[allow(dead_code)]
@@ -113,14 +112,14 @@ mod tests {
     {
         let cell = ::GridCell::new(1);
         cell.add_neighbor(Neighbor::West, GridCell::new(2).id);
-        assert![(*cell.west.borrow()).unwrap() == 2];
+        assert![cell.west.get().unwrap() == 2];
     }
 
     #[test] #[allow(dead_code)]
     pub fn get_neighbor_north()
     {
         let cell = GridCell::new(1);
-        (*cell.north.borrow_mut()) = Some(2);
+        cell.north.set(Some(2));
         assert![cell.get_neighbor(Neighbor::North).unwrap() == 2];
     } 
 
@@ -128,7 +127,7 @@ mod tests {
     pub fn get_neighbor_south()
     {
         let cell = GridCell::new(1);
-        (*cell.south.borrow_mut()) = Some(2);
+        cell.south.set(Some(2));
         assert![cell.get_neighbor(Neighbor::South).unwrap() == 2];
     }
 
@@ -136,7 +135,7 @@ mod tests {
     pub fn get_neighbor_east()
     {
         let cell = ::GridCell::new(1);
-        (*cell.east.borrow_mut()) = Some(2);
+        cell.east.set(Some(2));
         assert![cell.get_neighbor(Neighbor::East).unwrap() == 2];
     }
     
@@ -144,7 +143,7 @@ mod tests {
     pub fn get_neighbor_west()
     {
         let cell = ::GridCell::new(1);
-        (*cell.west.borrow_mut()) = Some(2);
+        cell.west.set(Some(2));
         assert![cell.get_neighbor(Neighbor::West).unwrap() == 2];
     }
 }

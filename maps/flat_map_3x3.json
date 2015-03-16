@@ -11,5 +11,7 @@
         {"id" : 7, "north" : 4, "south" : 0, "east" : 8, "west" : 0 },
         {"id" : 8, "north" : 0, "south" : 0, "east" : 9, "west" : 7 },
         {"id" : 9, "north" : 6, "south" : 0, "east" : 0, "west" : 8 }
-    ]
+    ],
+    "begin_cell" : 1,
+    "target_cell" : 9
 }

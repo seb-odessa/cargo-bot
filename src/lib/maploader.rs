@@ -7,10 +7,10 @@ use serialize::json;
 #[derive(Debug)]
 pub struct Cell { 
     pub id     : usize, 
-    pub north  :usize, 
-    pub south  :usize, 
-    pub east   :usize, 
-    pub west   :usize,
+    pub north  : usize, 
+    pub south  : usize, 
+    pub east   : usize, 
+    pub west   : usize,
 }
 
 #[derive(Decodable,Encodable)]
@@ -18,7 +18,9 @@ pub struct Cell {
 pub struct Map { 
     pub map_name : String, 
     pub count : usize, 
-    pub cells : Vec<Cell> 
+    pub cells : Vec<Cell>, 
+    pub begin_cell : usize,
+    pub target_cell : usize,
 }
 impl Map {
     #[allow(dead_code)] 

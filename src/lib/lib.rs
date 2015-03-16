@@ -11,6 +11,7 @@ pub use self::gridcell::GridCell;
 pub use self::gridcell::Neighbor;
 pub use self::gridmap::GridMap;
 pub use self::maploader::Map;
+pub use self::gameboard::GameBoard;
 
 
 pub mod gen;
@@ -18,5 +19,6 @@ pub mod bot;
 pub mod gridcell;
 pub mod gridmap;
 pub mod maploader;
+pub mod gameboard;
 
 extern crate serialize;
