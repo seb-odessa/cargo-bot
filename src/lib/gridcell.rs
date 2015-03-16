@@ -66,6 +66,16 @@ impl GridCell {
             Neighbor::West =>  self.west.get(),
         }
     }
+
+    #[allow(dead_code)]
+    pub fn is_neighbor(&self, dir: Neighbor) -> bool { 
+        match dir {
+            Neighbor::North => self.north.get().is_some(),
+            Neighbor::South => self.south.get().is_some(),
+            Neighbor::East =>  self.east.get().is_some(),
+            Neighbor::West =>  self.west.get().is_some(),
+        }
+    }
 }
 
 #[cfg(test)]

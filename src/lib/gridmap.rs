@@ -132,14 +132,14 @@ mod tests {
 	pub fn find_existing() {
 		let grid = GridMap::new();
 		grid.add_cell(Rc::new(GridCell::new(1)));
-		assert![grid.find(1).is_some()];	
+		assert![grid.find(1).is_some()];
 	}
 
 	#[test]
 	pub fn find_absent() {
 		let grid = GridMap::new();
 		grid.add_cell(Rc::new(GridCell::new(1)));
-		assert![grid.find(2).is_none()];		
+		assert![grid.find(2).is_none()];
 	}
 
 	#[test]
