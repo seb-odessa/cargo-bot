@@ -24,8 +24,7 @@ pub struct Map {
 }
 impl Map {
     #[allow(dead_code)] 
-    pub fn load_map(map_name : &str) -> Map
-    {
+    pub fn load_map(map_name : &str) -> Map {
         let path = Path::new(map_name);
         let display = path.display();
 
@@ -53,6 +52,26 @@ impl Map {
         }
 
         return map;
+    }
+
+    pub fn demo_map() -> Map {
+        Map{ 
+            map_name : "Test Map".to_string(), 
+            count : 9, 
+            cells : vec![
+                    Cell{ id:1, north:0, south:4, east:2, west:0 },
+                    Cell{ id:2, north:0, south:5, east:3, west:1 },
+                    Cell{ id:3, north:0, south:6, east:0, west:2 },
+                    Cell{ id:4, north:1, south:7, east:5, west:0 },
+                    Cell{ id:5, north:0, south:0, east:6, west:4 },
+                    Cell{ id:6, north:3, south:9, east:0, west:5 },
+                    Cell{ id:7, north:4, south:0, east:8, west:0 },
+                    Cell{ id:8, north:0, south:0, east:9, west:7 },
+                    Cell{ id:9, north:6, south:0, east:0, west:8 }
+                ], 
+            begin_cell : 1,
+            target_cell : 9,
+        }
     }
 }
     

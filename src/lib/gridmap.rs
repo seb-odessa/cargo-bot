@@ -71,7 +71,7 @@ impl GridMap {
 	}
 
 	#[allow(dead_code)]
-	pub fn load_map(&self, map : &Map)
+	fn load_map(&self, map : &Map)
 	{
 		self.cells.borrow_mut().clear();
 		// Add all cells to the storage
@@ -119,6 +119,27 @@ mod tests {
 		let grid = GridMap::new();
 		grid.add_cell(Rc::new(GridCell::new(1)));
 		assert_eq!(grid.cells.borrow().len(), 1);
+	}
+
+	#[test]
+	pub fn exist() {
+		let grid = GridMap::new();
+		grid.add_cell(Rc::new(GridCell::new(1)));
+		assert![grid.exist(1)];
+	}
+
+	#[test]
+	pub fn find_existing() {
+		let grid = GridMap::new();
+		grid.add_cell(Rc::new(GridCell::new(1)));
+		assert![grid.find(1).is_some()];	
+	}
+
+	#[test]
+	pub fn find_absent() {
+		let grid = GridMap::new();
+		grid.add_cell(Rc::new(GridCell::new(1)));
+		assert![grid.find(2).is_none()];		
 	}
 
 	#[test]
