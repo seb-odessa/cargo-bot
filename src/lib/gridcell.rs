@@ -58,22 +58,12 @@ impl GridCell {
     }
 
     #[allow(dead_code)]
-    pub fn get_neighbor(&self, dir: Neighbor) -> Option<CellId> { 
-        match dir {
+    pub fn get_neighbor(&self, dir: &Neighbor) -> Option<CellId> { 
+        match *dir {
             Neighbor::North => self.north.get(),
             Neighbor::South => self.south.get(),
             Neighbor::East =>  self.east.get(),
             Neighbor::West =>  self.west.get(),
-        }
-    }
-
-    #[allow(dead_code)]
-    pub fn is_neighbor(&self, dir: Neighbor) -> bool { 
-        match dir {
-            Neighbor::North => self.north.get().is_some(),
-            Neighbor::South => self.south.get().is_some(),
-            Neighbor::East =>  self.east.get().is_some(),
-            Neighbor::West =>  self.west.get().is_some(),
         }
     }
 }
