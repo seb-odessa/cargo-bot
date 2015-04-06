@@ -1,7 +1,7 @@
 [package]
 
 name = "cargo-bot"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["seb <seb@ukr.net>"]
 
 [lib]
@@ -12,3 +12,6 @@ path = "src/lib/lib.rs"
 [[bin]]
 name = "cargo-bot"
 path = "src/main.rs"
+
+[dependencies]
+rustc-serialize = "*"

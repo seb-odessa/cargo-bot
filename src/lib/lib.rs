@@ -1,10 +1,4 @@
-#![feature(box_syntax)]
-#![feature(std_misc)]
-#![feature(rustc_private)]
-#![feature(old_path)]
-#![feature(io)]
 
-pub use self::gen::Gen;
 pub use self::bot::Bot;
 pub use self::gridcell::CellId;
 pub use self::gridcell::GridCell;
@@ -13,12 +7,12 @@ pub use self::gridmap::GridMap;
 pub use self::maploader::Map;
 pub use self::gameboard::GameBoard;
 
-
-pub mod gen;
 pub mod bot;
 pub mod gridcell;
 pub mod gridmap;
 pub mod maploader;
 pub mod gameboard;
 
-extern crate serialize;
+extern crate rustc_serialize;
+
+

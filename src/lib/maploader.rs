@@ -1,10 +1,10 @@
 
 use std::io::prelude::*;
 use std::fs::File;
-use serialize::json;
+use std::path::Path;
+use rustc_serialize::json;
 
-#[derive(Decodable,Encodable)]
-#[derive(Debug)]
+#[derive(RustcDecodable, RustcEncodable, Debug)]
 pub struct Cell { 
     pub id     : usize, 
     pub north  : usize, 
@@ -13,8 +13,7 @@ pub struct Cell {
     pub west   : usize,
 }
 
-#[derive(Decodable,Encodable)]
-#[derive(Debug)]
+#[derive(RustcDecodable, RustcEncodable, Debug)]
 pub struct Map { 
     pub map_name : String, 
     pub count : usize, 
@@ -31,14 +30,14 @@ impl Map {
         // Open the path in read-only mode, returns `IoResult<File>`
         let mut file = match File::open(&path) {
             // The `desc` field of `IoError` is a string that describes the error
-            Err(why) => panic!("couldn't open {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't open {}: {}", display, why),
             Ok(file) => file,
         };
 
         // Read the file contents into a string, returns `IoResult<String>`
         let mut s = String::new();
         match file.read_to_string(&mut s) {
-            Err(why) => panic!("couldn't read {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't read {}: {}", display, why),
             Ok(_) => println!("{} contains:\n{}", display, s),
         }
 
@@ -78,8 +77,8 @@ impl Map {
 
 #[cfg(test)]
 mod tests {
-    use serialize::json;
-    #[derive(Decodable,Encodable)]
+    use rustc_serialize::json;
+    #[derive(RustcDecodable, RustcEncodable, Debug)]
     pub struct TestStruct { id : usize, map_name : String }
     #[test]
     pub fn encode_decode_json()

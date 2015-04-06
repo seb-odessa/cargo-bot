@@ -33,7 +33,7 @@ impl GameBoard {
 	}
 
 	#[allow(dead_code)] 
-	pub fn execute(&self, cmd : Command, arg : &Neighbor) -> bool {
+	pub fn execute(&self, cmd : Command, arg : Neighbor) -> bool {
 		match cmd {
 			Command::Move => self.do_move(arg),
 			Command::Stop => false,
@@ -41,7 +41,7 @@ impl GameBoard {
 	}
 
 	#[allow(dead_code)] 
-	fn do_move(&self, direction : &Neighbor) -> bool {
+	fn do_move(&self, direction : Neighbor) -> bool {
 		let cargo = self.map.find(self.cargo.get());
 		if cargo.is_none() { return false; }
 		match cargo.unwrap().get_neighbor(direction) {
@@ -54,7 +54,6 @@ impl GameBoard {
 		self.cargo.set(cell);
 		true
 	}
-
 }
 
 #[cfg(test)]
@@ -66,7 +65,7 @@ mod tests {
     pub fn load()
     {
         let board = GameBoard::load(&Map::demo_map(), 1, 9);
-        assert![board.cargo == 1];
+        assert![board.cargo.get() == 1];
         assert![board.target == 9];
     }
 

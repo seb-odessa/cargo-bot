@@ -3,7 +3,7 @@ use std::fmt;
 
 pub type CellId = usize;
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum Neighbor{ North, South, East, West }
 
 #[derive(Debug)]    
@@ -58,8 +58,8 @@ impl GridCell {
     }
 
     #[allow(dead_code)]
-    pub fn get_neighbor(&self, dir: &Neighbor) -> Option<CellId> { 
-        match *dir {
+    pub fn get_neighbor(&self, dir: Neighbor) -> Option<CellId> { 
+        match dir {
             Neighbor::North => self.north.get(),
             Neighbor::South => self.south.get(),
             Neighbor::East =>  self.east.get(),
