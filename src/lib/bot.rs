@@ -49,3 +49,4 @@ mod tests {
         assert_eq!(bot.cell.get(), 1);
     }
 }
+
