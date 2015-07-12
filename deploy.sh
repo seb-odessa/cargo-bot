@@ -8,7 +8,10 @@ git init
 git config user.name "seb-odessa"
 git config user.email "seb@ukr.net"
 
-git remote add upstream "git@github.com/seb-odessa/cargo-bot"
+
+#git@github.com:seb-odessa/cargo-bot.git
+
+git remote add upstream "git@github.com:seb-odessa/cargo-bot"
 git fetch upstream && git reset upstream/gh-pages
 
 touch .
