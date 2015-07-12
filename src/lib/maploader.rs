@@ -1,5 +1,6 @@
 
 use std::io::prelude::*;
+use std::io::Error;
 use std::fs::File;
 use std::path::Path;
 use rustc_serialize::json;
@@ -22,35 +23,44 @@ pub struct Map {
     pub target_cell : usize,
 }
 impl Map {
-    #[allow(dead_code)] 
-    pub fn load_map(map_name : &str) -> Map {
-        let path = Path::new(map_name);
-        let display = path.display();
 
-        // Open the path in read-only mode, returns `IoResult<File>`
-        let mut file = match File::open(&path) {
-            // The `desc` field of `IoError` is a string that describes the error
-            Err(why) => panic!("couldn't open {}: {}", display, why),
-            Ok(file) => file,
-        };
+    #[allow(dead_code)]
+    pub fn new(name : String, rows : usize, cols : usize) -> Map {
 
-        // Read the file contents into a string, returns `IoResult<String>`
+        let mut cells : Vec<Cell> = vec![];
+        
+        for row in 0..rows {
+            for col in 0..cols {
+                cells.push( Cell{ id:(row * cols + col), north:0, south:0, east:0, west:0 } );
+            }
+        }
+
+        Map{ 
+            map_name : name, 
+            count : rows * cols, 
+            cells : cells, 
+            begin_cell : 1,
+            target_cell : 1,
+        }
+    }
+
+     #[allow(dead_code)] 
+    pub fn load(name : &str) -> Result<Map, Error> {
+        let path = Path::new(name);
+        let mut file = try!(File::open(&path));
         let mut s = String::new();
-        match file.read_to_string(&mut s) {
-            Err(why) => panic!("couldn't read {}: {}", display, why),
-            Ok(_) => println!("{} contains:\n{}", display, s),
-        }
+        try!(file.read_to_string(&mut s));
+        let map : Map = json::decode(&s[..]).ok().expect("filed to decode json"); 
+        return Ok(map);
+    }
 
-        let map : Map = match json::decode(&s[..]) {
-            Err(why) => panic!("couldn't parse {}: {}", display, why),
-            Ok(ok) => ok,
-        };
-
-        if map.count != map.cells.len() {
-            panic!("expected {} cells, but was found {}!", map.count, map.cells.len());
-        }
-
-        return map;
+   #[allow(dead_code)] 
+    pub fn save (name : &str, map : &Map) -> Result<(), Error> {
+        let path = Path::new(name);
+        let mut file = try!(File::create(&path));
+        let js = json::encode(&map).ok().expect("failed to encode map");
+        try!(file.write(&js.as_bytes()));
+        Ok(())
     }
 
     pub fn demo_map() -> Map {
