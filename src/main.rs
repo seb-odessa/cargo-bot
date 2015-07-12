@@ -22,7 +22,7 @@ fn main(){
         println!("board.is_complete() => {:?}", board.is_complete());
     }
 
-    match Map::save("maps/new_map.json", &map) {
+    match Map::save("/tmp/the_map.json", &map) {
         Err(why) => panic!("ERROR: {}", why),
         Ok(_) => ()
     }

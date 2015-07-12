@@ -16,11 +16,10 @@ pub struct Cell {
 
 #[derive(RustcDecodable, RustcEncodable, Debug)]
 pub struct Map { 
-    pub map_name : String, 
-    pub count : usize, 
+    pub name : String, 
     pub cells : Vec<Cell>, 
-    pub begin_cell : usize,
-    pub target_cell : usize,
+    pub begin : usize,
+    pub target : usize,
 }
 impl Map {
 
@@ -36,11 +35,10 @@ impl Map {
         }
 
         Map{ 
-            map_name : name, 
-            count : rows * cols, 
+            name : name, 
             cells : cells, 
-            begin_cell : 1,
-            target_cell : 1,
+            begin : 1,
+            target : 1,
         }
     }
 
@@ -65,8 +63,7 @@ impl Map {
 
     pub fn demo_map() -> Map {
         Map{ 
-            map_name : "Test Map".to_string(), 
-            count : 9, 
+            name : "Test Map".to_string(), 
             cells : vec![
                     Cell{ id:1, north:0, south:4, east:2, west:0 },
                     Cell{ id:2, north:0, south:5, east:3, west:1 },
@@ -78,8 +75,8 @@ impl Map {
                     Cell{ id:8, north:0, south:0, east:9, west:7 },
                     Cell{ id:9, north:6, south:0, east:0, west:8 }
                 ], 
-            begin_cell : 1,
-            target_cell : 9,
+            begin : 1,
+            target : 9,
         }
     }
 }
