@@ -14,7 +14,6 @@
 //! 
 //! #[allow(dead_code)]
 //! fn main(){
-//!     // let map : Map = Map::load_map("maps/flat_map_3x3.json");
 //!     let map : Map = Map::demo_map();
 //!     let board : GameBoard = GameBoard::load(&map, 1, 9);
 //!
@@ -27,17 +26,23 @@
 //! ```
 //!
 //! will produce:
-//!
-//! ```
+//! 
 //! board.execute(Command::Move, South) => true
+//! 
 //! board.is_complete() => false
+//! 
 //! board.execute(Command::Move, South) => true
+//! 
 //! board.is_complete() => false
+//! 
 //! board.execute(Command::Move, East) => true
+//! 
 //! board.is_complete() => false
+//! 
 //! board.execute(Command::Move, East) => true
+//! 
 //! board.is_complete() => true
-//! ```
+//! 
 
 
 
