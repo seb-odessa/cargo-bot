@@ -45,8 +45,46 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-0' class='srclink' href='../src/lib/lib.rs.html#2-14' title='goto source code'>[src]</a></span></h1>
-<h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+        </span><a id='src-0' class='srclink' href='../src/lib/lib.rs.html#1-56' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>This library contains representation of the linked wetwork of cells.</p>
+
+<p>The possible way for traverse of the network</p>
+
+<p>For example:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>lib</span>;
+ 
+<span class='kw'>use</span> <span class='ident'>lib</span>::<span class='ident'>maploader</span>::<span class='ident'>Map</span>;
+<span class='kw'>use</span> <span class='ident'>lib</span>::<span class='ident'>gridcell</span>::<span class='ident'>Neighbor</span>;
+<span class='kw'>use</span> <span class='ident'>lib</span>::<span class='ident'>gameboard</span>::<span class='ident'>GameBoard</span>;
+<span class='kw'>use</span> <span class='ident'>lib</span>::<span class='ident'>gameboard</span>::<span class='ident'>Command</span>;
+ 
+<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
+<span class='kw'>fn</span> <span class='ident'>main</span>(){
+    <span class='comment'>// let map : Map = Map::load_map(&quot;maps/flat_map_3x3.json&quot;);</span>
+    <span class='kw'>let</span> <span class='ident'>map</span> : <span class='ident'>Map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>demo_map</span>();
+    <span class='kw'>let</span> <span class='ident'>board</span> : <span class='ident'>GameBoard</span> <span class='op'>=</span> <span class='ident'>GameBoard</span>::<span class='ident'>load</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>, <span class='number'>1</span>, <span class='number'>9</span>);
+
+    <span class='kw'>let</span> <span class='ident'>route</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='ident'>Neighbor</span>::<span class='ident'>South</span>,<span class='ident'>Neighbor</span>::<span class='ident'>South</span>,<span class='ident'>Neighbor</span>::<span class='ident'>East</span>,<span class='ident'>Neighbor</span>::<span class='ident'>East</span>,];
+    <span class='kw'>for</span> <span class='ident'>direction</span> <span class='kw'>in</span> <span class='ident'>route</span>.<span class='ident'>iter</span>() {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;board.execute(Command::Move, {:?}) =&gt; {}&quot;</span>, <span class='op'>*</span><span class='ident'>direction</span>, <span class='ident'>board</span>.<span class='ident'>execute</span>(<span class='ident'>Command</span>::<span class='ident'>Move</span>, <span class='op'>*</span><span class='ident'>direction</span>));
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;board.is_complete() =&gt; {:?}&quot;</span>, <span class='ident'>board</span>.<span class='ident'>is_complete</span>());
+    }
+}
+</pre>
+
+<p>will produce:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='ident'>board</span>.<span class='ident'>execute</span>(<span class='ident'>Command</span>::<span class='ident'>Move</span>, <span class='ident'>South</span>) <span class='op'>=&gt;</span> <span class='boolval'>true</span>
+<span class='ident'>board</span>.<span class='ident'>is_complete</span>() <span class='op'>=&gt;</span> <span class='boolval'>false</span>
+<span class='ident'>board</span>.<span class='ident'>execute</span>(<span class='ident'>Command</span>::<span class='ident'>Move</span>, <span class='ident'>South</span>) <span class='op'>=&gt;</span> <span class='boolval'>true</span>
+<span class='ident'>board</span>.<span class='ident'>is_complete</span>() <span class='op'>=&gt;</span> <span class='boolval'>false</span>
+<span class='ident'>board</span>.<span class='ident'>execute</span>(<span class='ident'>Command</span>::<span class='ident'>Move</span>, <span class='ident'>East</span>) <span class='op'>=&gt;</span> <span class='boolval'>true</span>
+<span class='ident'>board</span>.<span class='ident'>is_complete</span>() <span class='op'>=&gt;</span> <span class='boolval'>false</span>
+<span class='ident'>board</span>.<span class='ident'>execute</span>(<span class='ident'>Command</span>::<span class='ident'>Move</span>, <span class='ident'>East</span>) <span class='op'>=&gt;</span> <span class='boolval'>true</span>
+<span class='ident'>board</span>.<span class='ident'>is_complete</span>() <span class='op'>=&gt;</span> <span class='boolval'>true</span>
+</pre>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
 <table><tr><td><code>pub use self::<a class='mod'
                                             href='./gridcell/index.html'>gridcell</a>::<a class='type' href='../lib/gridcell/type.CellId.html' title='lib::gridcell::CellId'>CellId</a>;</code></td></tr><tr><td><code>pub use self::<a class='mod'
                                             href='./gridcell/index.html'>gridcell</a>::<a class='struct' href='../lib/gridcell/struct.GridCell.html' title='lib::gridcell::GridCell'>GridCell</a>;</code></td></tr><tr><td><code>pub use self::<a class='mod'

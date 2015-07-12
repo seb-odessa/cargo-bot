@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/lib/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `lib/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -56,7 +56,91 @@
 <span id="14">14</span>
 <span id="15">15</span>
 <span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
 </pre><pre class='rust '>
+<span class='doccomment'>//! This library contains representation of the linked wetwork of cells.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! The possible way for traverse of the network</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! For example:</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! extern crate lib;</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! use lib::maploader::Map;</span>
+<span class='doccomment'>//! use lib::gridcell::Neighbor;</span>
+<span class='doccomment'>//! use lib::gameboard::GameBoard;</span>
+<span class='doccomment'>//! use lib::gameboard::Command;</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! #[allow(dead_code)]</span>
+<span class='doccomment'>//! fn main(){</span>
+<span class='doccomment'>//!     // let map : Map = Map::load_map(&quot;maps/flat_map_3x3.json&quot;);</span>
+<span class='doccomment'>//!     let map : Map = Map::demo_map();</span>
+<span class='doccomment'>//!     let board : GameBoard = GameBoard::load(&amp;map, 1, 9);</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];</span>
+<span class='doccomment'>//!     for direction in route.iter() {</span>
+<span class='doccomment'>//!         println!(&quot;board.execute(Command::Move, {:?}) =&gt; {}&quot;, *direction, board.execute(Command::Move, *direction));</span>
+<span class='doccomment'>//!         println!(&quot;board.is_complete() =&gt; {:?}&quot;, board.is_complete());</span>
+<span class='doccomment'>//!     }</span>
+<span class='doccomment'>//! }</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! will produce:</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
+<span class='doccomment'>//! board.is_complete() =&gt; false</span>
+<span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
+<span class='doccomment'>//! board.is_complete() =&gt; false</span>
+<span class='doccomment'>//! board.execute(Command::Move, East) =&gt; true</span>
+<span class='doccomment'>//! board.is_complete() =&gt; false</span>
+<span class='doccomment'>//! board.execute(Command::Move, East) =&gt; true</span>
+<span class='doccomment'>//! board.is_complete() =&gt; true</span>
+<span class='doccomment'>//! ```</span>
+
+
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gridcell</span>::<span class='ident'>CellId</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gridcell</span>::<span class='ident'>GridCell</span>;
