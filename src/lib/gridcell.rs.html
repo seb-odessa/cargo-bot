@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `gridcell.rs`.">
+    <meta name="description" content="Source to the Rust file `src/lib/gridcell.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>gridcell.rs.html -- source</title>
@@ -211,6 +211,8 @@
 <span id="169">169</span>
 <span id="170">170</span>
 <span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! The definition for the GridCell</span>
 <span class='doccomment'>//!</span>
@@ -227,9 +229,11 @@
 <span class='doccomment'>//!    assert![cell.south.is_none()];</span>
 <span class='doccomment'>//!    assert![cell.east.is_none()];</span>
 <span class='doccomment'>//!    assert![cell.west.is_none()];</span>
-<span class='doccomment'>//!    cell.add_neighbor(Neighbor::North, 2);</span>
-<span class='doccomment'>//!    assert![cell.north.unwrap() == 2];</span>
-<span class='doccomment'>//!    assert![cell.get_neighbor(Neighbor::North).unwrap() == cell.north.unwrap()]; </span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!    let north = GridCell::new(2);</span>
+<span class='doccomment'>//!    cell.add_neighbor(Neighbor::North, north.id);</span>
+<span class='doccomment'>//!    assert![cell.north.unwrap() == north.id];</span>
+<span class='doccomment'>//!    assert![cell.get_neighbor(Neighbor::North).unwrap() == north.id]; </span>
 <span class='doccomment'>//!}</span>
 <span class='doccomment'>//! ```</span>
 
