@@ -15,7 +15,7 @@
 //! #[allow(dead_code)]
 //! fn main(){
 //!     let map : Map = Map::demo_map();
-//!     let board : GameBoard = GameBoard::load(&map, 1, 9);
+//!     let mut board : GameBoard = GameBoard::load(&map, 1, 9);
 //!
 //!     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];
 //!     for direction in route.iter() {
@@ -46,9 +46,7 @@
 
 
 
-pub use self::gridcell::CellId;
-pub use self::gridcell::GridCell;
-pub use self::gridcell::Neighbor;
+pub use self::gridcell::{Id, GridCell, Neighbor};
 pub use self::gridmap::GridMap;
 pub use self::maploader::Map;
 pub use self::gameboard::GameBoard;

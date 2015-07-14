@@ -1,8 +1,6 @@
 use maploader::Map;
-use gridcell::CellId;
+use gridcell::{Id, Neighbor};
 use gridmap::GridMap;
-use gridcell::Neighbor;
-use std::cell::Cell;
 
 #[derive(Debug)]
 pub enum Command { 
@@ -15,46 +13,49 @@ pub enum Command {
 #[derive(Debug)]
 pub struct GameBoard {	
 	map    : GridMap,
-	cargo  : Cell<CellId>,
-	target : CellId,
+	current: Id,
+	finish : Id,
 	steps  : usize,
 }
 
 impl GameBoard {
 
 	#[allow(dead_code)] 
-	pub fn load(map : &Map, begin : CellId, target : CellId) -> GameBoard {
-		GameBoard { map : GridMap::load(map),  cargo : Cell::new(begin), target : target, steps : 0 } 
+	pub fn load(map : &Map, start : Id, finish : Id) -> GameBoard {
+		GameBoard { map : GridMap::load(map), current : start, finish : finish, steps : 0 } 
 	}
 
 	#[allow(dead_code)] 
 	pub fn is_complete(&self) -> bool {
-		self.cargo.get() == self.target
+		self.current == self.finish
 	}
 
 	#[allow(dead_code)] 
-	pub fn execute(&self, cmd : Command, arg : Neighbor) -> bool {
-		match cmd {
-			Command::Move => self.do_move(arg),
+	pub fn execute(&mut self, cmd : Command, dir : Neighbor) -> bool {
+		let is_ok = match cmd {
+			Command::Move => self.do_move(dir),
 			Command::Stop => false,
-		}		
+		};
+        return is_ok && !self.is_complete()
 	}
 
 	#[allow(dead_code)] 
-	fn do_move(&self, direction : Neighbor) -> bool {
-		let cargo = self.map.find(self.cargo.get());
-		if cargo.is_none() { return false; }
-		match cargo.unwrap().get_neighbor(direction) {
-			Some(cell) => self.set_cargo(cell),
-			None => false
-		}
-	}
-
-	fn set_cargo(&self, cell : CellId) -> bool{
-		self.cargo.set(cell);
-		true
+	fn do_move(&mut self, dir : Neighbor) -> bool {
+        let curr_pos = self.map.find(self.current);
+        if curr_pos.is_none() { 
+            return false; 
+        }
+        let next = curr_pos.unwrap().get_neighbor(dir);
+        if next.is_none() {
+            return false;
+        }
+     
+        self.current = next.unwrap(); 
+        self.steps = self.steps + 1;
+        return true;
 	}
 }
+
 
 #[cfg(test)]
 mod tests {
@@ -65,8 +66,8 @@ mod tests {
     pub fn load()
     {
         let board = GameBoard::load(&Map::demo_map(), 1, 9);
-        assert![board.cargo.get() == 1];
-        assert![board.target == 9];
+        assert![board.current == 1];
+        assert![board.finish == 9];
     }
 
     #[test] 
@@ -81,3 +82,4 @@ mod tests {
     	assert![!board.is_complete()];
     }
 }
+

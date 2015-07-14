@@ -1,151 +1,138 @@
-use std::rc::Rc;
-use std::cell::RefCell;
+//use std::rc::Rc;
+//use std::cell::RefCell;
 use std::collections::BTreeMap;
 
-use gridcell::CellId;
-use gridcell::GridCell;
-use gridcell::Neighbor;
+use gridcell::{Id, GridCell, Neighbor};
 use maploader::Map;
 
 
 #[allow(dead_code)] 
 #[derive(Debug)]
 pub struct GridMap	{
-	pub cells			: RefCell<BTreeMap<CellId, Rc<GridCell>>>,
+	pub cells			: BTreeMap<Id, GridCell>,
 }
 impl GridMap {
 	#[allow(dead_code)] 
 	pub fn new() -> GridMap {
-		GridMap { cells : RefCell::new(BTreeMap::new()) } 
-	}
-
-	#[allow(dead_code)] 
-	pub fn load(map : &Map) -> GridMap {
-		let grid = GridMap::new();
-		grid.load_map(map);
-		return grid;
+		GridMap { cells : BTreeMap::new() } 
 	}
 	
 	#[allow(dead_code)]
-	pub fn exist(&self, id : CellId) -> bool {
-		self.cells.borrow().contains_key(&id)
+	pub fn exist(&self, id : Id) -> bool {
+		self.cells.contains_key(&id)
 	}
 
 	#[allow(dead_code)]
-	pub fn find(&self, id : CellId) -> Option<Rc<GridCell>> {
-		match self.cells.borrow().get(&id) {
-			Some(cell) => Some(cell.clone()),
+	pub fn find(&self, id : Id) -> Option<&GridCell> {
+		match self.cells.get(&id) {
+			Some(cell) => Some(cell),
 			None => None,
 		}
 	}
 
 	#[allow(dead_code)]
-	fn add_cell(&self, cell : Rc<GridCell>) {
+	fn add(&mut self, cell : GridCell) {
 		self.ensure_new(cell.id);
-		self.cells.borrow_mut().insert(cell.id, cell);		
+		self.cells.insert(cell.id, cell);		
 	}
 
 	#[allow(dead_code)]
-	fn add_neighbor(&self, lhv : CellId, rhv : CellId, neighbor : Neighbor) -> () {
+	fn add_neighbor(&mut self, lhv : Id, rhv : Id, neighbor : Neighbor) -> () {
 		// link neighbor according to direction
 		self.ensure_exist(lhv);
 		self.ensure_exist(rhv);
-		self.cells.borrow().get(&lhv).unwrap().add_neighbor(neighbor, rhv);
+		self.cells.get_mut(&lhv).unwrap().add_neighbor(neighbor, rhv);
 	}
 
 	#[allow(dead_code)]
-	fn ensure_exist(&self, id : CellId) -> () {
+	fn ensure_exist(&self, id : Id) -> () {
 		assert!(self.exist(id));
 	}
 
 	#[allow(dead_code)]
-	fn ensure_new(&self, id : CellId) -> () {
+	fn ensure_new(&self, id : Id) -> () {
 		assert!(!self.exist(id));
 	}
 
 	#[allow(dead_code)]
 	pub fn print_map(&self){
-		for (key, cell) in self.cells.borrow().iter() {
+		for (key, cell) in self.cells.iter() {
 				println!("{:2}: {}", key, cell);
 		}
 	}
 
 	#[allow(dead_code)]
-	fn load_map(&self, map : &Map)
+	pub fn load(map : &Map) -> GridMap
 	{
-		self.cells.borrow_mut().clear();
+        let mut grid = GridMap::new();
 		// Add all cells to the storage
 		for cell in map.cells.iter() {
-			self.add_cell(Rc::new(GridCell::new(cell.id)));
-			// println!("The cell {} was added to the map.", cell.id);
+			grid.add(GridCell::new(cell.id));
 		}
+      
 		// Link all cells in the map
 		for cell in map.cells.iter() {
 			if cell.north > 0 {
-				self.add_neighbor(cell.id, cell.north, Neighbor::North);
-				// println!("For the cell {} was added NORTH neighbor {}.", cell.id, cell.north);
+				grid.add_neighbor(cell.id, cell.north, Neighbor::North);
 			}
 			if cell.south > 0 {
-				self.add_neighbor(cell.id, cell.south, Neighbor::South);
-				// println!("For the cell {} was added SOUTH neighbor {}.", cell.id, cell.south);
+				grid.add_neighbor(cell.id, cell.south, Neighbor::South);
 			}
 			if cell.west > 0 {
-				self.add_neighbor(cell.id, cell.west, Neighbor::West);
-				// println!("For the cell {} was added WEST neighbor {}.", cell.id, cell.west);
+				grid.add_neighbor(cell.id, cell.west, Neighbor::West);
 			}
 			if cell.east > 0 {
-				self.add_neighbor(cell.id, cell.east, Neighbor::East);
-				// println!("For the cell {} was added EAST neighbor {}.", cell.id, cell.east);
+				grid.add_neighbor(cell.id, cell.east, Neighbor::East);
 			}
 		}
-	}
+      
+	return grid;
+    }
 }
 
 #[cfg(test)]
 mod tests {
-	use std::rc::Rc;
-	use gridcell::GridCell;
-	use gridcell::Neighbor;
+	use gridcell::{GridCell, Neighbor};
 	use gridmap::GridMap;
 
 	#[test] 
 	pub fn new() {
 		let grid = GridMap::new();
-		assert!(grid.cells.borrow().is_empty());
+		assert!(grid.cells.is_empty());
 	}
 
 	#[test] 
 	pub fn add_cell() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
-		assert_eq!(grid.cells.borrow().len(), 1);
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
+		assert_eq!(grid.cells.len(), 1);
 	}
 
 	#[test]
 	pub fn exist() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
 		assert![grid.exist(1)];
 	}
 
 	#[test]
 	pub fn find_existing() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
 		assert![grid.find(1).is_some()];
 	}
 
 	#[test]
 	pub fn find_absent() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
 		assert![grid.find(2).is_none()];
 	}
 
 	#[test]
 	pub fn ensure_exist() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
 		grid.ensure_exist(1);
 	}
 
@@ -156,44 +143,43 @@ mod tests {
 
 	#[test]
 	pub fn add_north_neighbor() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
-		grid.add_cell(Rc::new(GridCell::new(2)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
+		grid.add(GridCell::new(2));
 		grid.add_neighbor(1, 2, Neighbor::North);
-		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::North).unwrap(), 2);
+		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::North).unwrap(), 2);
 	}
 
 	#[test]
 	pub fn add_south_neighbor() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
-		grid.add_cell(Rc::new(GridCell::new(2)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
+		grid.add(GridCell::new(2));
 		grid.add_neighbor(1, 2, Neighbor::South);
-		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::South).unwrap(), 2);
+		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::South).unwrap(), 2);
 	}
 
 	#[test]
 	pub fn add_east_neighbor() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
-		grid.add_cell(Rc::new(GridCell::new(2)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
+		grid.add(GridCell::new(2));
 		grid.add_neighbor(1, 2, Neighbor::East);
-		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::East).unwrap(), 2);
+		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::East).unwrap(), 2);
 	}
 
 	#[test]
 	pub fn add_west_neighbor() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
-		grid.add_cell(Rc::new(GridCell::new(2)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
+		grid.add(GridCell::new(2));
 		grid.add_neighbor(1, 2, Neighbor::West);
-		assert_eq!(grid.cells.borrow().get(&1).unwrap().get_neighbor(Neighbor::West).unwrap(), 2);
+		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::West).unwrap(), 2);
 	}
 }
 
 #[cfg(test)]
 mod panic {
-	use std::rc::Rc;
 	use gridcell::GridCell;	
 	use gridmap::GridMap;
 
@@ -206,9 +192,10 @@ mod panic {
 	#[test]
 	#[should_panic]
 	pub fn ensure_new() {
-		let grid = GridMap::new();
-		grid.add_cell(Rc::new(GridCell::new(1)));
+		let mut grid = GridMap::new();
+		grid.add(GridCell::new(1));
 		grid.ensure_new(1);
 	}
 }
+
 

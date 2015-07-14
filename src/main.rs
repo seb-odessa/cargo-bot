@@ -14,13 +14,15 @@ fn main(){
     };
 
 //    let map : Map = Map::demo_map();
-    let board : GameBoard = GameBoard::load(&map, 1, 9);
+    let mut board : GameBoard = GameBoard::load(&map, 1, 9);
 
     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];
     for direction in route.iter() {
         println!("board.execute(Command::Move, {:?}) => {}", *direction, board.execute(Command::Move, *direction));
-        println!("board.is_complete() => {:?}", board.is_complete());
     }
+    
+    println!("board.is_complete() => {:?}", board.is_complete());
+    
 
     match Map::save("/tmp/the_map.json", &map) {
         Err(why) => panic!("ERROR: {}", why),
