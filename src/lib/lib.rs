@@ -20,28 +20,23 @@
 //!     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];
 //!     for direction in route.iter() {
 //!         println!("board.execute(Command::Move, {:?}) => {}", *direction, board.execute(Command::Move, *direction));
-//!         println!("board.is_complete() => {:?}", board.is_complete());
 //!     }
+//!     println!("board.is_complete() => {:?}", board.is_complete());          
 //! }
 //! ```
 //!
 //! will produce:
 //! 
 //! board.execute(Command::Move, South) => true
-//! 
-//! board.is_complete() => false
-//! 
+//!
 //! board.execute(Command::Move, South) => true
-//! 
-//! board.is_complete() => false
-//! 
+//!
 //! board.execute(Command::Move, East) => true
-//! 
-//! board.is_complete() => false
-//! 
-//! board.execute(Command::Move, East) => true
-//! 
+//!
+//! board.execute(Command::Move, East) => false
+//!
 //! board.is_complete() => true
+//!
 //! 
 
 
