@@ -1,6 +1,6 @@
 //! The definition for the GridCell
 //!
-//! GridCell contains it uniq id and <b>could</b> contain ids of the nearest neighbors
+//! GridCell contains it's uniq id and <b>could</b> contain ids of the nearest neighbors
 //!
 //! ```
 //!extern crate lib;
