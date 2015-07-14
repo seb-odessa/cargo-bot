@@ -45,8 +45,27 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-11' class='srclink' href='../../src/lib/gridcell.rs.html#2-149' title='goto source code'>[src]</a></span></h1>
-<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+        </span><a id='src-11' class='srclink' href='../../src/lib/gridcell.rs.html#1-169' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>The definition for the GridCell</p>
+
+<p>GridCell contains it uniq id and <b>could</b> contain ids of the nearest neighbors</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>lib</span>;
+<span class='kw'>use</span> <span class='ident'>lib</span>::<span class='ident'>gridcell</span>::{<span class='ident'>GridCell</span>, <span class='ident'>Neighbor</span>};
+
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>cell</span> <span class='op'>=</span> <span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>);
+    <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>cell</span>.<span class='ident'>id</span> <span class='op'>==</span> <span class='number'>1</span>];
+    <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>cell</span>.<span class='ident'>north</span>.<span class='ident'>is_none</span>()];
+    <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>cell</span>.<span class='ident'>south</span>.<span class='ident'>is_none</span>()];
+    <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>cell</span>.<span class='ident'>east</span>.<span class='ident'>is_none</span>()];
+    <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>cell</span>.<span class='ident'>west</span>.<span class='ident'>is_none</span>()];
+    <span class='ident'>cell</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>North</span>, <span class='number'>2</span>);
+    <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>cell</span>.<span class='ident'>north</span>.<span class='ident'>unwrap</span>() <span class='op'>==</span> <span class='number'>2</span>];
+    <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>cell</span>.<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>North</span>).<span class='ident'>unwrap</span>() <span class='op'>==</span> <span class='ident'>cell</span>.<span class='ident'>north</span>.<span class='ident'>unwrap</span>()]; 
+}
+</pre>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr class=' module-item'>
                         <td><a class='struct' href='struct.GridCell.html'

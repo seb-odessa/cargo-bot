@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/lib/gridcell.rs`.">
+    <meta name="description" content="Source to the Rust file `gridcell.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>gridcell.rs.html -- source</title>
@@ -191,10 +191,50 @@
 <span id="149">149</span>
 <span id="150">150</span>
 <span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
 </pre><pre class='rust '>
-<span class='comment'>//use std::cell::Cell;</span>
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
+<span class='doccomment'>//! The definition for the GridCell</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! GridCell contains it uniq id and &lt;b&gt;could&lt;/b&gt; contain ids of the nearest neighbors</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//!extern crate lib;</span>
+<span class='doccomment'>//!use lib::gridcell::{GridCell, Neighbor};</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//!fn main() {</span>
+<span class='doccomment'>//!    let mut cell = GridCell::new(1);</span>
+<span class='doccomment'>//!    assert![cell.id == 1];</span>
+<span class='doccomment'>//!    assert![cell.north.is_none()];</span>
+<span class='doccomment'>//!    assert![cell.south.is_none()];</span>
+<span class='doccomment'>//!    assert![cell.east.is_none()];</span>
+<span class='doccomment'>//!    assert![cell.west.is_none()];</span>
+<span class='doccomment'>//!    cell.add_neighbor(Neighbor::North, 2);</span>
+<span class='doccomment'>//!    assert![cell.north.unwrap() == 2];</span>
+<span class='doccomment'>//!    assert![cell.get_neighbor(Neighbor::North).unwrap() == cell.north.unwrap()]; </span>
+<span class='doccomment'>//!}</span>
+<span class='doccomment'>//! ```</span>
 
+
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>Id</span> <span class='op'>=</span> <span class='ident'>usize</span>;
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>, <span class='ident'>Copy</span>)]</span>
