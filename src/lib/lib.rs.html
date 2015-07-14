@@ -96,11 +96,6 @@
 <span id="54">54</span>
 <span id="55">55</span>
 <span id="56">56</span>
-<span id="57">57</span>
-<span id="58">58</span>
-<span id="59">59</span>
-<span id="60">60</span>
-<span id="61">61</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! This library contains representation of the linked wetwork of cells.</span>
 <span class='doccomment'>//!</span>
@@ -124,28 +119,23 @@
 <span class='doccomment'>//!     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];</span>
 <span class='doccomment'>//!     for direction in route.iter() {</span>
 <span class='doccomment'>//!         println!(&quot;board.execute(Command::Move, {:?}) =&gt; {}&quot;, *direction, board.execute(Command::Move, *direction));</span>
-<span class='doccomment'>//!         println!(&quot;board.is_complete() =&gt; {:?}&quot;, board.is_complete());</span>
 <span class='doccomment'>//!     }</span>
+<span class='doccomment'>//!     println!(&quot;board.is_complete() =&gt; {:?}&quot;, board.is_complete());          </span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! will produce:</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
-<span class='doccomment'>//! </span>
-<span class='doccomment'>//! board.is_complete() =&gt; false</span>
-<span class='doccomment'>//! </span>
+<span class='doccomment'>//!</span>
 <span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
-<span class='doccomment'>//! </span>
-<span class='doccomment'>//! board.is_complete() =&gt; false</span>
-<span class='doccomment'>//! </span>
+<span class='doccomment'>//!</span>
 <span class='doccomment'>//! board.execute(Command::Move, East) =&gt; true</span>
-<span class='doccomment'>//! </span>
-<span class='doccomment'>//! board.is_complete() =&gt; false</span>
-<span class='doccomment'>//! </span>
-<span class='doccomment'>//! board.execute(Command::Move, East) =&gt; true</span>
-<span class='doccomment'>//! </span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! board.execute(Command::Move, East) =&gt; false</span>
+<span class='doccomment'>//!</span>
 <span class='doccomment'>//! board.is_complete() =&gt; true</span>
+<span class='doccomment'>//!</span>
 <span class='doccomment'>//! </span>
 
 
