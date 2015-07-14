@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `lib/gridmap.rs`.">
+    <meta name="description" content="Source to the Rust file `src/lib/gridmap.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>gridmap.rs.html -- source</title>
@@ -241,168 +241,142 @@
 <span id="199">199</span>
 <span id="200">200</span>
 <span id="201">201</span>
-<span id="202">202</span>
-<span id="203">203</span>
-<span id="204">204</span>
-<span id="205">205</span>
-<span id="206">206</span>
-<span id="207">207</span>
-<span id="208">208</span>
-<span id="209">209</span>
-<span id="210">210</span>
-<span id="211">211</span>
-<span id="212">212</span>
-<span id="213">213</span>
-<span id="214">214</span>
 </pre><pre class='rust '>
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>rc</span>::<span class='ident'>Rc</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>RefCell</span>;
+<span class='comment'>//use std::rc::Rc;</span>
+<span class='comment'>//use std::cell::RefCell;</span>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 
-<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>CellId</span>;
-<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>GridCell</span>;
-<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>Neighbor</span>;
+<span class='kw'>use</span> <span class='ident'>gridcell</span>::{<span class='ident'>Id</span>, <span class='ident'>GridCell</span>, <span class='ident'>Neighbor</span>};
 <span class='kw'>use</span> <span class='ident'>maploader</span>::<span class='ident'>Map</span>;
 
 
 <span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span> 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>GridMap</span>	{
-	<span class='kw'>pub</span> <span class='ident'>cells</span>			: <span class='ident'>RefCell</span><span class='op'>&lt;</span><span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>CellId</span>, <span class='ident'>Rc</span><span class='op'>&lt;</span><span class='ident'>GridCell</span><span class='op'>&gt;&gt;</span><span class='op'>&gt;</span>,
+	<span class='kw'>pub</span> <span class='ident'>cells</span>			: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>Id</span>, <span class='ident'>GridCell</span><span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> <span class='ident'>GridMap</span> {
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span> 
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>() <span class='op'>-&gt;</span> <span class='ident'>GridMap</span> {
-		<span class='ident'>GridMap</span> { <span class='ident'>cells</span> : <span class='ident'>RefCell</span>::<span class='ident'>new</span>(<span class='ident'>BTreeMap</span>::<span class='ident'>new</span>()) } 
-	}
-
-	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span> 
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>load</span>(<span class='ident'>map</span> : <span class='kw-2'>&amp;</span><span class='ident'>Map</span>) <span class='op'>-&gt;</span> <span class='ident'>GridMap</span> {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>load_map</span>(<span class='ident'>map</span>);
-		<span class='kw'>return</span> <span class='ident'>grid</span>;
+		<span class='ident'>GridMap</span> { <span class='ident'>cells</span> : <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>() } 
 	}
 	
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>exist</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>CellId</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-		<span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>contains_key</span>(<span class='kw-2'>&amp;</span><span class='ident'>id</span>)
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>exist</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>Id</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+		<span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>contains_key</span>(<span class='kw-2'>&amp;</span><span class='ident'>id</span>)
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>find</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>CellId</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Rc</span><span class='op'>&lt;</span><span class='ident'>GridCell</span><span class='op'>&gt;&gt;</span> {
-		<span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='ident'>id</span>) {
-			<span class='prelude-val'>Some</span>(<span class='ident'>cell</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>cell</span>.<span class='ident'>clone</span>()),
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>find</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>Id</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>GridCell</span><span class='op'>&gt;</span> {
+		<span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='ident'>id</span>) {
+			<span class='prelude-val'>Some</span>(<span class='ident'>cell</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>cell</span>),
 			<span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='prelude-val'>None</span>,
 		}
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
-	<span class='kw'>fn</span> <span class='ident'>add_cell</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>cell</span> : <span class='ident'>Rc</span><span class='op'>&lt;</span><span class='ident'>GridCell</span><span class='op'>&gt;</span>) {
+	<span class='kw'>fn</span> <span class='ident'>add</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>cell</span> : <span class='ident'>GridCell</span>) {
 		<span class='self'>self</span>.<span class='ident'>ensure_new</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>);
-		<span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>insert</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>);		
+		<span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>insert</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>);		
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
-	<span class='kw'>fn</span> <span class='ident'>add_neighbor</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>lhv</span> : <span class='ident'>CellId</span>, <span class='ident'>rhv</span> : <span class='ident'>CellId</span>, <span class='ident'>neighbor</span> : <span class='ident'>Neighbor</span>) <span class='op'>-&gt;</span> () {
+	<span class='kw'>fn</span> <span class='ident'>add_neighbor</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>lhv</span> : <span class='ident'>Id</span>, <span class='ident'>rhv</span> : <span class='ident'>Id</span>, <span class='ident'>neighbor</span> : <span class='ident'>Neighbor</span>) <span class='op'>-&gt;</span> () {
 		<span class='comment'>// link neighbor according to direction</span>
 		<span class='self'>self</span>.<span class='ident'>ensure_exist</span>(<span class='ident'>lhv</span>);
 		<span class='self'>self</span>.<span class='ident'>ensure_exist</span>(<span class='ident'>rhv</span>);
-		<span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='ident'>lhv</span>).<span class='ident'>unwrap</span>().<span class='ident'>add_neighbor</span>(<span class='ident'>neighbor</span>, <span class='ident'>rhv</span>);
+		<span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>get_mut</span>(<span class='kw-2'>&amp;</span><span class='ident'>lhv</span>).<span class='ident'>unwrap</span>().<span class='ident'>add_neighbor</span>(<span class='ident'>neighbor</span>, <span class='ident'>rhv</span>);
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
-	<span class='kw'>fn</span> <span class='ident'>ensure_exist</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>CellId</span>) <span class='op'>-&gt;</span> () {
+	<span class='kw'>fn</span> <span class='ident'>ensure_exist</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>Id</span>) <span class='op'>-&gt;</span> () {
 		<span class='macro'>assert</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>exist</span>(<span class='ident'>id</span>));
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
-	<span class='kw'>fn</span> <span class='ident'>ensure_new</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>CellId</span>) <span class='op'>-&gt;</span> () {
+	<span class='kw'>fn</span> <span class='ident'>ensure_new</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span> : <span class='ident'>Id</span>) <span class='op'>-&gt;</span> () {
 		<span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='self'>self</span>.<span class='ident'>exist</span>(<span class='ident'>id</span>));
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>print_map</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>){
-		<span class='kw'>for</span> (<span class='ident'>key</span>, <span class='ident'>cell</span>) <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>iter</span>() {
+		<span class='kw'>for</span> (<span class='ident'>key</span>, <span class='ident'>cell</span>) <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>iter</span>() {
 				<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:2}: {}&quot;</span>, <span class='ident'>key</span>, <span class='ident'>cell</span>);
 		}
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
-	<span class='kw'>fn</span> <span class='ident'>load_map</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>map</span> : <span class='kw-2'>&amp;</span><span class='ident'>Map</span>)
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>load</span>(<span class='ident'>map</span> : <span class='kw-2'>&amp;</span><span class='ident'>Map</span>) <span class='op'>-&gt;</span> <span class='ident'>GridMap</span>
 	{
-		<span class='self'>self</span>.<span class='ident'>cells</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>clear</span>();
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
 		<span class='comment'>// Add all cells to the storage</span>
 		<span class='kw'>for</span> <span class='ident'>cell</span> <span class='kw'>in</span> <span class='ident'>map</span>.<span class='ident'>cells</span>.<span class='ident'>iter</span>() {
-			<span class='self'>self</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>)));
-			<span class='comment'>// println!(&quot;The cell {} was added to the map.&quot;, cell.id);</span>
+			<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>));
 		}
+      
 		<span class='comment'>// Link all cells in the map</span>
 		<span class='kw'>for</span> <span class='ident'>cell</span> <span class='kw'>in</span> <span class='ident'>map</span>.<span class='ident'>cells</span>.<span class='ident'>iter</span>() {
 			<span class='kw'>if</span> <span class='ident'>cell</span>.<span class='ident'>north</span> <span class='op'>&gt;</span> <span class='number'>0</span> {
-				<span class='self'>self</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>north</span>, <span class='ident'>Neighbor</span>::<span class='ident'>North</span>);
-				<span class='comment'>// println!(&quot;For the cell {} was added NORTH neighbor {}.&quot;, cell.id, cell.north);</span>
+				<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>north</span>, <span class='ident'>Neighbor</span>::<span class='ident'>North</span>);
 			}
 			<span class='kw'>if</span> <span class='ident'>cell</span>.<span class='ident'>south</span> <span class='op'>&gt;</span> <span class='number'>0</span> {
-				<span class='self'>self</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>south</span>, <span class='ident'>Neighbor</span>::<span class='ident'>South</span>);
-				<span class='comment'>// println!(&quot;For the cell {} was added SOUTH neighbor {}.&quot;, cell.id, cell.south);</span>
+				<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>south</span>, <span class='ident'>Neighbor</span>::<span class='ident'>South</span>);
 			}
 			<span class='kw'>if</span> <span class='ident'>cell</span>.<span class='ident'>west</span> <span class='op'>&gt;</span> <span class='number'>0</span> {
-				<span class='self'>self</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>west</span>, <span class='ident'>Neighbor</span>::<span class='ident'>West</span>);
-				<span class='comment'>// println!(&quot;For the cell {} was added WEST neighbor {}.&quot;, cell.id, cell.west);</span>
+				<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>west</span>, <span class='ident'>Neighbor</span>::<span class='ident'>West</span>);
 			}
 			<span class='kw'>if</span> <span class='ident'>cell</span>.<span class='ident'>east</span> <span class='op'>&gt;</span> <span class='number'>0</span> {
-				<span class='self'>self</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>east</span>, <span class='ident'>Neighbor</span>::<span class='ident'>East</span>);
-				<span class='comment'>// println!(&quot;For the cell {} was added EAST neighbor {}.&quot;, cell.id, cell.east);</span>
+				<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='ident'>cell</span>.<span class='ident'>id</span>, <span class='ident'>cell</span>.<span class='ident'>east</span>, <span class='ident'>Neighbor</span>::<span class='ident'>East</span>);
 			}
 		}
-	}
+      
+	<span class='kw'>return</span> <span class='ident'>grid</span>;
+    }
 }
 
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>tests</span> {
-	<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>rc</span>::<span class='ident'>Rc</span>;
-	<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>GridCell</span>;
-	<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>Neighbor</span>;
+	<span class='kw'>use</span> <span class='ident'>gridcell</span>::{<span class='ident'>GridCell</span>, <span class='ident'>Neighbor</span>};
 	<span class='kw'>use</span> <span class='ident'>gridmap</span>::<span class='ident'>GridMap</span>;
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span> 
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>() {
 		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>is_empty</span>());
+		<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>is_empty</span>());
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span> 
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_cell</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
-		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>len</span>(), <span class='number'>1</span>);
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
+		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>len</span>(), <span class='number'>1</span>);
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>exist</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
 		<span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>grid</span>.<span class='ident'>exist</span>(<span class='number'>1</span>)];
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>find_existing</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
 		<span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>grid</span>.<span class='ident'>find</span>(<span class='number'>1</span>).<span class='ident'>is_some</span>()];
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>find_absent</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
 		<span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>grid</span>.<span class='ident'>find</span>(<span class='number'>2</span>).<span class='ident'>is_none</span>()];
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ensure_exist</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
 		<span class='ident'>grid</span>.<span class='ident'>ensure_exist</span>(<span class='number'>1</span>);
 	}
 
@@ -413,44 +387,43 @@
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_north_neighbor</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>));
 		<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='number'>1</span>, <span class='number'>2</span>, <span class='ident'>Neighbor</span>::<span class='ident'>North</span>);
-		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>North</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
+		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>North</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_south_neighbor</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>));
 		<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='number'>1</span>, <span class='number'>2</span>, <span class='ident'>Neighbor</span>::<span class='ident'>South</span>);
-		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>South</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
+		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>South</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_east_neighbor</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>));
 		<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='number'>1</span>, <span class='number'>2</span>, <span class='ident'>Neighbor</span>::<span class='ident'>East</span>);
-		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>East</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
+		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>East</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
 	}
 
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_west_neighbor</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>2</span>));
 		<span class='ident'>grid</span>.<span class='ident'>add_neighbor</span>(<span class='number'>1</span>, <span class='number'>2</span>, <span class='ident'>Neighbor</span>::<span class='ident'>West</span>);
-		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>borrow</span>().<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>West</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
+		<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>grid</span>.<span class='ident'>cells</span>.<span class='ident'>get</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>).<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>Neighbor</span>::<span class='ident'>West</span>).<span class='ident'>unwrap</span>(), <span class='number'>2</span>);
 	}
 }
 
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>panic</span> {
-	<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>rc</span>::<span class='ident'>Rc</span>;
 	<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>GridCell</span>;	
 	<span class='kw'>use</span> <span class='ident'>gridmap</span>::<span class='ident'>GridMap</span>;
 
@@ -463,11 +436,12 @@
 	<span class='attribute'>#[<span class='ident'>test</span>]</span>
 	<span class='attribute'>#[<span class='ident'>should_panic</span>]</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ensure_new</span>() {
-		<span class='kw'>let</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
-		<span class='ident'>grid</span>.<span class='ident'>add_cell</span>(<span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>)));
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>grid</span> <span class='op'>=</span> <span class='ident'>GridMap</span>::<span class='ident'>new</span>();
+		<span class='ident'>grid</span>.<span class='ident'>add</span>(<span class='ident'>GridCell</span>::<span class='ident'>new</span>(<span class='number'>1</span>));
 		<span class='ident'>grid</span>.<span class='ident'>ensure_new</span>(<span class='number'>1</span>);
 	}
 }
+
 
 </pre>
 </section>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `lib/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `src/lib/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -98,6 +98,9 @@
 <span id="56">56</span>
 <span id="57">57</span>
 <span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! This library contains representation of the linked wetwork of cells.</span>
 <span class='doccomment'>//!</span>
@@ -115,9 +118,8 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! #[allow(dead_code)]</span>
 <span class='doccomment'>//! fn main(){</span>
-<span class='doccomment'>//!     // let map : Map = Map::load_map(&quot;maps/flat_map_3x3.json&quot;);</span>
 <span class='doccomment'>//!     let map : Map = Map::demo_map();</span>
-<span class='doccomment'>//!     let board : GameBoard = GameBoard::load(&amp;map, 1, 9);</span>
+<span class='doccomment'>//!     let mut board : GameBoard = GameBoard::load(&amp;map, 1, 9);</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];</span>
 <span class='doccomment'>//!     for direction in route.iter() {</span>
@@ -128,23 +130,27 @@
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! will produce:</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.is_complete() =&gt; false</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.is_complete() =&gt; false</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.execute(Command::Move, East) =&gt; true</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.is_complete() =&gt; false</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.execute(Command::Move, East) =&gt; true</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! board.is_complete() =&gt; true</span>
-<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 
 
 
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gridcell</span>::<span class='ident'>CellId</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gridcell</span>::<span class='ident'>GridCell</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gridcell</span>::<span class='ident'>Neighbor</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gridcell</span>::{<span class='ident'>Id</span>, <span class='ident'>GridCell</span>, <span class='ident'>Neighbor</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gridmap</span>::<span class='ident'>GridMap</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>maploader</span>::<span class='ident'>Map</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>gameboard</span>::<span class='ident'>GameBoard</span>;

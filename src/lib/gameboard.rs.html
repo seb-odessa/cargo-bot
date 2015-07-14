@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `lib/gameboard.rs`.">
+    <meta name="description" content="Source to the Rust file `src/lib/gameboard.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>gameboard.rs.html -- source</title>
@@ -123,12 +123,12 @@
 <span id="81">81</span>
 <span id="82">82</span>
 <span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>maploader</span>::<span class='ident'>Map</span>;
-<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>CellId</span>;
+<span class='kw'>use</span> <span class='ident'>gridcell</span>::{<span class='ident'>Id</span>, <span class='ident'>Neighbor</span>};
 <span class='kw'>use</span> <span class='ident'>gridmap</span>::<span class='ident'>GridMap</span>;
-<span class='kw'>use</span> <span class='ident'>gridcell</span>::<span class='ident'>Neighbor</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>Cell</span>;
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Command</span> { 
@@ -141,46 +141,49 @@
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>GameBoard</span> {	
 	<span class='ident'>map</span>    : <span class='ident'>GridMap</span>,
-	<span class='ident'>cargo</span>  : <span class='ident'>Cell</span><span class='op'>&lt;</span><span class='ident'>CellId</span><span class='op'>&gt;</span>,
-	<span class='ident'>target</span> : <span class='ident'>CellId</span>,
+	<span class='ident'>current</span>: <span class='ident'>Id</span>,
+	<span class='ident'>finish</span> : <span class='ident'>Id</span>,
 	<span class='ident'>steps</span>  : <span class='ident'>usize</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>GameBoard</span> {
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span> 
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>load</span>(<span class='ident'>map</span> : <span class='kw-2'>&amp;</span><span class='ident'>Map</span>, <span class='ident'>begin</span> : <span class='ident'>CellId</span>, <span class='ident'>target</span> : <span class='ident'>CellId</span>) <span class='op'>-&gt;</span> <span class='ident'>GameBoard</span> {
-		<span class='ident'>GameBoard</span> { <span class='ident'>map</span> : <span class='ident'>GridMap</span>::<span class='ident'>load</span>(<span class='ident'>map</span>),  <span class='ident'>cargo</span> : <span class='ident'>Cell</span>::<span class='ident'>new</span>(<span class='ident'>begin</span>), <span class='ident'>target</span> : <span class='ident'>target</span>, <span class='ident'>steps</span> : <span class='number'>0</span> } 
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>load</span>(<span class='ident'>map</span> : <span class='kw-2'>&amp;</span><span class='ident'>Map</span>, <span class='ident'>start</span> : <span class='ident'>Id</span>, <span class='ident'>finish</span> : <span class='ident'>Id</span>) <span class='op'>-&gt;</span> <span class='ident'>GameBoard</span> {
+		<span class='ident'>GameBoard</span> { <span class='ident'>map</span> : <span class='ident'>GridMap</span>::<span class='ident'>load</span>(<span class='ident'>map</span>), <span class='ident'>current</span> : <span class='ident'>start</span>, <span class='ident'>finish</span> : <span class='ident'>finish</span>, <span class='ident'>steps</span> : <span class='number'>0</span> } 
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span> 
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>is_complete</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-		<span class='self'>self</span>.<span class='ident'>cargo</span>.<span class='ident'>get</span>() <span class='op'>==</span> <span class='self'>self</span>.<span class='ident'>target</span>
+		<span class='self'>self</span>.<span class='ident'>current</span> <span class='op'>==</span> <span class='self'>self</span>.<span class='ident'>finish</span>
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span> 
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>execute</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>cmd</span> : <span class='ident'>Command</span>, <span class='ident'>arg</span> : <span class='ident'>Neighbor</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-		<span class='kw'>match</span> <span class='ident'>cmd</span> {
-			<span class='ident'>Command</span>::<span class='ident'>Move</span> <span class='op'>=&gt;</span> <span class='self'>self</span>.<span class='ident'>do_move</span>(<span class='ident'>arg</span>),
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>execute</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>cmd</span> : <span class='ident'>Command</span>, <span class='ident'>dir</span> : <span class='ident'>Neighbor</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+		<span class='kw'>let</span> <span class='ident'>is_ok</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>cmd</span> {
+			<span class='ident'>Command</span>::<span class='ident'>Move</span> <span class='op'>=&gt;</span> <span class='self'>self</span>.<span class='ident'>do_move</span>(<span class='ident'>dir</span>),
 			<span class='ident'>Command</span>::<span class='ident'>Stop</span> <span class='op'>=&gt;</span> <span class='boolval'>false</span>,
-		}		
+		};
+        <span class='kw'>return</span> <span class='ident'>is_ok</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='self'>self</span>.<span class='ident'>is_complete</span>()
 	}
 
 	<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span> 
-	<span class='kw'>fn</span> <span class='ident'>do_move</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>direction</span> : <span class='ident'>Neighbor</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-		<span class='kw'>let</span> <span class='ident'>cargo</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>map</span>.<span class='ident'>find</span>(<span class='self'>self</span>.<span class='ident'>cargo</span>.<span class='ident'>get</span>());
-		<span class='kw'>if</span> <span class='ident'>cargo</span>.<span class='ident'>is_none</span>() { <span class='kw'>return</span> <span class='boolval'>false</span>; }
-		<span class='kw'>match</span> <span class='ident'>cargo</span>.<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>direction</span>) {
-			<span class='prelude-val'>Some</span>(<span class='ident'>cell</span>) <span class='op'>=&gt;</span> <span class='self'>self</span>.<span class='ident'>set_cargo</span>(<span class='ident'>cell</span>),
-			<span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='boolval'>false</span>
-		}
-	}
-
-	<span class='kw'>fn</span> <span class='ident'>set_cargo</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>cell</span> : <span class='ident'>CellId</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span>{
-		<span class='self'>self</span>.<span class='ident'>cargo</span>.<span class='ident'>set</span>(<span class='ident'>cell</span>);
-		<span class='boolval'>true</span>
+	<span class='kw'>fn</span> <span class='ident'>do_move</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dir</span> : <span class='ident'>Neighbor</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+        <span class='kw'>let</span> <span class='ident'>curr_pos</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>map</span>.<span class='ident'>find</span>(<span class='self'>self</span>.<span class='ident'>current</span>);
+        <span class='kw'>if</span> <span class='ident'>curr_pos</span>.<span class='ident'>is_none</span>() { 
+            <span class='kw'>return</span> <span class='boolval'>false</span>; 
+        }
+        <span class='kw'>let</span> <span class='ident'>next</span> <span class='op'>=</span> <span class='ident'>curr_pos</span>.<span class='ident'>unwrap</span>().<span class='ident'>get_neighbor</span>(<span class='ident'>dir</span>);
+        <span class='kw'>if</span> <span class='ident'>next</span>.<span class='ident'>is_none</span>() {
+            <span class='kw'>return</span> <span class='boolval'>false</span>;
+        }
+     
+        <span class='self'>self</span>.<span class='ident'>current</span> <span class='op'>=</span> <span class='ident'>next</span>.<span class='ident'>unwrap</span>(); 
+        <span class='self'>self</span>.<span class='ident'>steps</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>steps</span> <span class='op'>+</span> <span class='number'>1</span>;
+        <span class='kw'>return</span> <span class='boolval'>true</span>;
 	}
 }
+
 
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>tests</span> {
@@ -191,8 +194,8 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>load</span>()
     {
         <span class='kw'>let</span> <span class='ident'>board</span> <span class='op'>=</span> <span class='ident'>GameBoard</span>::<span class='ident'>load</span>(<span class='kw-2'>&amp;</span><span class='ident'>Map</span>::<span class='ident'>demo_map</span>(), <span class='number'>1</span>, <span class='number'>9</span>);
-        <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>board</span>.<span class='ident'>cargo</span>.<span class='ident'>get</span>() <span class='op'>==</span> <span class='number'>1</span>];
-        <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>board</span>.<span class='ident'>target</span> <span class='op'>==</span> <span class='number'>9</span>];
+        <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>board</span>.<span class='ident'>current</span> <span class='op'>==</span> <span class='number'>1</span>];
+        <span class='macro'>assert</span><span class='macro'>!</span>[<span class='ident'>board</span>.<span class='ident'>finish</span> <span class='op'>==</span> <span class='number'>9</span>];
     }
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span> 
@@ -207,6 +210,7 @@
     	<span class='macro'>assert</span><span class='macro'>!</span>[<span class='op'>!</span><span class='ident'>board</span>.<span class='ident'>is_complete</span>()];
     }
 }
+
 </pre>
 </section>
     <section id='search' class="content hidden"></section>
