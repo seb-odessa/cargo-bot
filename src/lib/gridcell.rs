@@ -1,6 +1,28 @@
-//use std::cell::Cell;
-use std::fmt;
+//! The definition for the GridCell
+//!
+//! GridCell contains it uniq id and <b>could</b> contain ids of the nearest neighbors
+//!
+//! ```
+//!extern crate lib;
+//!use lib::gridcell::{GridCell, Neighbor};
+//!
+//!fn main() {
+//!    let mut cell = GridCell::new(1);
+//!    assert![cell.id == 1];
+//!    assert![cell.north.is_none()];
+//!    assert![cell.south.is_none()];
+//!    assert![cell.east.is_none()];
+//!    assert![cell.west.is_none()];
+//!
+//!    let north = GridCell::new(2);
+//!    cell.add_neighbor(Neighbor::North, north.id);
+//!    assert![cell.north.unwrap() == north.id];
+//!    assert![cell.get_neighbor(Neighbor::North).unwrap() == north.id]; 
+//!}
+//! ```
 
+
+use std::fmt;
 pub type Id = usize;
 
 #[derive(Debug, Clone, Copy)]
