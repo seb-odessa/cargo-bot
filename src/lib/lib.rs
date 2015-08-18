@@ -18,8 +18,8 @@
 //!     let mut board : GameBoard = GameBoard::load(&map, 1, 9);
 //!
 //!     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];
-//!     for direction in route.iter() {
-//!         println!("board.execute(Command::Move, {:?}) => {}", *direction, board.execute(Command::Move, *direction));
+//!     for dir in &route {
+//!         println!("board.execute(Command::Move, {:?}) => {}", *dir, board.execute(Command::Move, *dir));
 //!     }
 //!     println!("board.is_complete() => {:?}", board.is_complete());          
 //! }

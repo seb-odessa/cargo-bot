@@ -1,6 +1,6 @@
 //use std::rc::Rc;
 //use std::cell::RefCell;
-use std::collections::BTreeMap;
+use std::collections::HashMap;
 
 use gridcell::{Id, GridCell, Neighbor};
 use maploader::Map;
@@ -9,12 +9,12 @@ use maploader::Map;
 #[allow(dead_code)] 
 #[derive(Debug)]
 pub struct GridMap	{
-	pub cells			: BTreeMap<Id, GridCell>,
+	pub cells			: HashMap<Id, GridCell>,
 }
 impl GridMap {
 	#[allow(dead_code)] 
 	pub fn new() -> GridMap {
-		GridMap { cells : BTreeMap::new() } 
+		GridMap { cells : HashMap::new() } 
 	}
 	
 	#[allow(dead_code)]
