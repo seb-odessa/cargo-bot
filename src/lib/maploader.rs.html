@@ -143,7 +143,7 @@
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Map</span> { 
     <span class='kw'>pub</span> <span class='ident'>name</span> : <span class='ident'>String</span>, 
     <span class='kw'>pub</span> <span class='ident'>cells</span> : <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Cell</span><span class='op'>&gt;</span>, 
-    <span class='kw'>pub</span> <span class='ident'>begin</span> : <span class='ident'>usize</span>,
+    <span class='kw'>pub</span> <span class='ident'>start</span>  : <span class='ident'>usize</span>,
     <span class='kw'>pub</span> <span class='ident'>target</span> : <span class='ident'>usize</span>,
 }
 
@@ -181,7 +181,7 @@
                     <span class='ident'>Cell</span>{ <span class='ident'>id</span>:<span class='number'>8</span>, <span class='ident'>north</span>:<span class='number'>0</span>, <span class='ident'>south</span>:<span class='number'>0</span>, <span class='ident'>east</span>:<span class='number'>9</span>, <span class='ident'>west</span>:<span class='number'>7</span> },
                     <span class='ident'>Cell</span>{ <span class='ident'>id</span>:<span class='number'>9</span>, <span class='ident'>north</span>:<span class='number'>6</span>, <span class='ident'>south</span>:<span class='number'>0</span>, <span class='ident'>east</span>:<span class='number'>0</span>, <span class='ident'>west</span>:<span class='number'>8</span> }
                 ], 
-            <span class='ident'>begin</span> : <span class='number'>1</span>,
+            <span class='ident'>start</span> : <span class='number'>1</span>,
             <span class='ident'>target</span> : <span class='number'>9</span>,
         }
     }

@@ -94,7 +94,6 @@
 <span id="52">52</span>
 <span id="53">53</span>
 <span id="54">54</span>
-<span id="55">55</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! This library contains representation of the linked wetwork of cells.</span>
 <span class='doccomment'>//!</span>
@@ -108,16 +107,15 @@
 <span class='doccomment'>//! use lib::maploader::Map;</span>
 <span class='doccomment'>//! use lib::gridcell::Way;</span>
 <span class='doccomment'>//! use lib::gameboard::GameBoard;</span>
-<span class='doccomment'>//! use lib::gameboard::Command;</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! #[allow(dead_code)]</span>
 <span class='doccomment'>//! fn main(){</span>
 <span class='doccomment'>//!     let map : Map = Map::demo_map();</span>
-<span class='doccomment'>//!     let mut board : GameBoard = GameBoard::load(&amp;map, 1, 9);</span>
+<span class='doccomment'>//!     let mut board : GameBoard = GameBoard::load(&amp;map);</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     let route = vec![Way::South, Way::South, Way::East, Way::East];</span>
-<span class='doccomment'>//!     for dir in &amp;route {</span>
-<span class='doccomment'>//!         println!(&quot;board.execute(Command::Move, {:?}) =&gt; {}&quot;, *dir, board.execute(Command::Move, *dir));</span>
+<span class='doccomment'>//!     for way in &amp;route {</span>
+<span class='doccomment'>//!         println!(&quot;board.execute(Command::Move, {:?}) =&gt; {}&quot;, *way, board.goto(way));</span>
 <span class='doccomment'>//!     }</span>
 <span class='doccomment'>//!     println!(&quot;board.is_complete() =&gt; {:?}&quot;, board.is_complete());</span>
 <span class='doccomment'>//! }</span>
