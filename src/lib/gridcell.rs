@@ -77,7 +77,7 @@ impl GridCell {
             Way::South => self.south = Some(id),
             Way::East =>  self.east = Some(id),
             Way::West =>  self.west =Some(id),
-        }
+        } 
     }
 
     #[allow(dead_code)]
