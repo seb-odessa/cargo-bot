@@ -115,7 +115,7 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     let route = vec![Way::South, Way::South, Way::East, Way::East];</span>
 <span class='doccomment'>//!     for way in &amp;route {</span>
-<span class='doccomment'>//!         println!(&quot;board.execute(Command::Move, {:?}) =&gt; {}&quot;, *way, board.goto(way));</span>
+<span class='doccomment'>//!         println!(&quot;board.goto({:?}) =&gt; {}&quot;, *way, board.goto(way));</span>
 <span class='doccomment'>//!     }</span>
 <span class='doccomment'>//!     println!(&quot;board.is_complete() =&gt; {:?}&quot;, board.is_complete());</span>
 <span class='doccomment'>//! }</span>
@@ -123,13 +123,13 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! will produce:</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
+<span class='doccomment'>//! board.goto(South) =&gt; true</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! board.execute(Command::Move, South) =&gt; true</span>
+<span class='doccomment'>//! board.goto(South) =&gt; true</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! board.execute(Command::Move, East) =&gt; true</span>
+<span class='doccomment'>//! board.goto(East) =&gt; true</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! board.execute(Command::Move, East) =&gt; false</span>
+<span class='doccomment'>//! board.goto(East) =&gt; true </span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! board.is_complete() =&gt; true</span>
 <span class='doccomment'>//!</span>
