@@ -12,11 +12,10 @@ pub struct GridMap {
 impl fmt::Display for GridMap {
     #[allow(unused_must_use)]
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-	for (id, cell) in self.cells.iter() {
-	    try!(writeln!(f, "{:4}{}", id, cell));
-	}
-	write!(f, "")
-
+    	for (id, cell) in self.cells.iter() {
+	        try!(writeln!(f, "{:4}{}", id, cell));
+    	}
+	    write!(f, "")
     }
 }
 impl GridMap {
@@ -60,15 +59,8 @@ impl GridMap {
 	fn ensure_new(&self, id : Id) -> () {
 		assert!(!self.exist(id));
 	}
-
-	#[allow(dead_code)]
-	pub fn print_map(&self){
-		for (key, cell) in self.cells.iter() {
-				println!("{:2}: {}\n", key, cell);
-		}
-	}
-
-	#[allow(dead_code)]
+	
+    #[allow(dead_code)]
 	pub fn load(map : &Map) -> GridMap
 	{
 	    let mut grid = GridMap::new();
