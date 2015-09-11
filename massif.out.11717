@@ -1,0 +1,1694 @@
+desc: (none)
+cmd: ./target/debug/cargo-bot
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=359929
+mem_heap_B=352
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=490573
+mem_heap_B=472
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=detailed
+n2: 472 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 352 0x48E1D1A: __fopen_internal (iofopen.c:73)
+  n1: 352 0x48E1DF9: fopen@@GLIBC_2.1 (iofopen.c:103)
+   n1: 352 0x4844C5F: pthread_getattr_np (pthread_getattr_np.c:81)
+    n1: 352 0x17D025: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+     n0: 352 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+ n1: 120 0x48E28A5: getdelim (iogetdelim.c:66)
+  n1: 120 0x4844D57: pthread_getattr_np (pthread_getattr_np.c:116)
+   n1: 120 0x17D025: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 120 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+#-----------
+snapshot=3
+#-----------
+time=556264
+mem_heap_B=360
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=669675
+mem_heap_B=744
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=793945
+mem_heap_B=1256
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1117183
+mem_heap_B=1264
+mem_heap_extra_B=80
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=1203339
+mem_heap_B=1976
+mem_heap_extra_B=112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=1258379
+mem_heap_B=2632
+mem_heap_extra_B=136
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=1373493
+mem_heap_B=2656
+mem_heap_extra_B=152
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=1497907
+mem_heap_B=3488
+mem_heap_extra_B=200
+mem_stacks_B=0
+heap_tree=detailed
+n3: 3488 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n4: 2368 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 2160 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n4: 2160 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 1920 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 1920 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 1920 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 1920 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 1920 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 1920 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 1280 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 1280 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 1280 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 1280 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 1280 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 1280 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 1280 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 1280 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 1280 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 1280 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 1280 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 1280 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 1280 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 1280 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 160 0x14FCBC: vec::alloc_or_realloc::h13464409806990698699 (vec.rs:1272)
+     n1: 160 0x162551: vec::Vec$LT$T$GT$::push::resize::h18171320702649377088 (vec.rs:644)
+      n1: 160 0x1621CF: vec::Vec$LT$T$GT$::push::h3964153561029104972 (vec.rs:660)
+       n1: 160 0x160950: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1966)
+        n1: 160 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 160 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 160 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 160 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 160 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 160 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 160 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 160 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 160 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 160 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 160 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 160 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 160 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 40 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 40 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 40 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 40 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 40 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 40 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 40 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 40 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 40 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 40 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 40 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 40 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 40 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 40 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n1: 40 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n0: 40 in 2 places, all below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 40 in 2 places, all below massif's threshold (01.00%)
+  n0: 96 in 12 places, all below massif's threshold (01.00%)
+  n1: 64 0x173A5C: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 64 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 48 0x173ADE: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 48 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 48 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+ n3: 1072 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1024 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 1024 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 48 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 48 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 48 0x1491A7: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1274)
+     n1: 48 0x148F91: vec::Vec$LT$T$GT$::push::resize::h2167360315525609322 (vec.rs:644)
+      n1: 48 0x148CC4: vec::Vec$LT$T$GT$::push::h6318681719622103557 (vec.rs:660)
+       n0: 48 in 2 places, all below massif's threshold (01.00%)
+  n0: 0 in 2 places, all below massif's threshold (01.00%)
+ n0: 48 in 5 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=11
+#-----------
+time=1611589
+mem_heap_B=3496
+mem_heap_extra_B=208
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=1743029
+mem_heap_B=4168
+mem_heap_extra_B=248
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=1848418
+mem_heap_B=4176
+mem_heap_extra_B=256
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=1941785
+mem_heap_B=4200
+mem_heap_extra_B=280
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=2007050
+mem_heap_B=4856
+mem_heap_extra_B=304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=2085243
+mem_heap_B=4856
+mem_heap_extra_B=304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=2207859
+mem_heap_B=5528
+mem_heap_extra_B=344
+mem_stacks_B=0
+heap_tree=detailed
+n4: 5528 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 4360 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 4152 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n4: 4152 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 3840 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 3840 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 3840 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 3840 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 3840 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 3840 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 3200 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 3200 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 3200 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 3200 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 3200 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 3200 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 3200 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 3200 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 3200 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 3200 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 3200 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 3200 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 3200 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 3200 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 160 0x14FCBC: vec::alloc_or_realloc::h13464409806990698699 (vec.rs:1272)
+     n1: 160 0x162551: vec::Vec$LT$T$GT$::push::resize::h18171320702649377088 (vec.rs:644)
+      n1: 160 0x1621CF: vec::Vec$LT$T$GT$::push::h3964153561029104972 (vec.rs:660)
+       n1: 160 0x160950: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1966)
+        n1: 160 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 160 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 160 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 160 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 160 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 160 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 160 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 160 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 160 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 160 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 160 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 160 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 160 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 112 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 112 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 112 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 112 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 112 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 112 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 112 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 112 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 112 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 112 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 112 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 112 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 112 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 112 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n2: 112 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n1: 104 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+                    n1: 104 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+                     n1: 104 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+                      n1: 104 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                       n1: 104 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                        n1: 104 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                         n1: 104 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                          n1: 104 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                           n1: 104 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                            n1: 104 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                             n1: 104 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                              n0: 104 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 8 in 1 place, below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 40 in 2 places, all below massif's threshold (01.00%)
+  n0: 144 in 13 places, all below massif's threshold (01.00%)
+  n1: 64 0x173A5C: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 64 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+ n2: 1072 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1024 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 1024 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n0: 48 in 3 places, all below massif's threshold (01.00%)
+ n2: 80 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 72 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 72 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 72 0x15602A: vec::Vec$LT$T$GT$::shrink_to_fit::h15554840274446401563 (vec.rs:393)
+     n1: 72 0x155EBD: string::String::shrink_to_fit::h6a32fda6ae133bedpth (string.rs:454)
+      n1: 72 0x155967: string::T.ToString::to_string::h9308370896689623010 (string.rs:1049)
+       n1: 72 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+        n2: 72 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+         n1: 64 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+          n1: 64 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+           n1: 64 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+            n1: 64 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+             n1: 64 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+              n1: 64 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+               n1: 64 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                n1: 64 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                 n1: 64 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                  n1: 64 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 64 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 64 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 64 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n0: 8 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 8 in 1 place, below massif's threshold (01.00%)
+ n0: 16 in 4 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=18
+#-----------
+time=2321016
+mem_heap_B=5536
+mem_heap_extra_B=352
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=2392282
+mem_heap_B=5560
+mem_heap_extra_B=376
+mem_stacks_B=0
+heap_tree=detailed
+n4: 5560 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 4376 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 4168 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n4: 4168 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 3840 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 3840 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 3840 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 3840 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 3840 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 3840 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 3200 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 3200 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 3200 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 3200 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 3200 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 3200 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 3200 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 3200 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 3200 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 3200 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 3200 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 3200 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 3200 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 3200 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 160 0x14FCBC: vec::alloc_or_realloc::h13464409806990698699 (vec.rs:1272)
+     n1: 160 0x162551: vec::Vec$LT$T$GT$::push::resize::h18171320702649377088 (vec.rs:644)
+      n1: 160 0x1621CF: vec::Vec$LT$T$GT$::push::h3964153561029104972 (vec.rs:660)
+       n1: 160 0x160950: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1966)
+        n1: 160 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 160 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 160 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 160 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 160 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 160 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 160 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 160 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 160 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 160 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 160 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 160 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 160 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 128 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 128 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 128 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 128 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 128 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 128 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 128 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 128 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 128 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 128 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 128 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 128 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 128 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 128 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n2: 128 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n1: 120 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+                    n1: 120 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+                     n1: 120 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+                      n1: 120 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                       n1: 120 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                        n1: 120 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                         n1: 120 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                          n1: 120 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                           n1: 120 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                            n1: 120 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                             n1: 120 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                              n0: 120 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 8 in 1 place, below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 40 in 2 places, all below massif's threshold (01.00%)
+  n0: 144 in 13 places, all below massif's threshold (01.00%)
+  n1: 64 0x173A5C: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 64 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+ n2: 1072 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1024 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 1024 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n0: 48 in 3 places, all below massif's threshold (01.00%)
+ n2: 96 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 88 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 88 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 88 0x15602A: vec::Vec$LT$T$GT$::shrink_to_fit::h15554840274446401563 (vec.rs:393)
+     n1: 88 0x155EBD: string::String::shrink_to_fit::h6a32fda6ae133bedpth (string.rs:454)
+      n1: 88 0x155967: string::T.ToString::to_string::h9308370896689623010 (string.rs:1049)
+       n1: 88 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+        n2: 88 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+         n1: 80 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+          n1: 80 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+           n1: 80 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+            n1: 80 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+             n1: 80 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+              n1: 80 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+               n1: 80 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                n1: 80 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                 n1: 80 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                  n1: 80 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 80 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 80 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 80 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n0: 80 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n0: 8 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 8 in 1 place, below massif's threshold (01.00%)
+ n0: 16 in 4 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=20
+#-----------
+time=2502762
+mem_heap_B=6376
+mem_heap_extra_B=400
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=2562021
+mem_heap_B=6376
+mem_heap_extra_B=400
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=2655406
+mem_heap_B=6400
+mem_heap_extra_B=424
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=2720671
+mem_heap_B=7056
+mem_heap_extra_B=448
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=2798339
+mem_heap_B=7056
+mem_heap_extra_B=448
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=2920955
+mem_heap_B=7728
+mem_heap_extra_B=488
+mem_stacks_B=0
+heap_tree=detailed
+n4: 7728 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 6192 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 5984 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n3: 5984 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 5760 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 5760 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 5760 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 5760 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 5760 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 5760 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 5120 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 5120 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 5120 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 5120 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 5120 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 5120 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 5120 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 5120 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 5120 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 5120 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 5120 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 5120 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 5120 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 5120 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 184 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 184 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 184 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 184 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 184 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 184 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 184 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 184 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 184 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 184 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 184 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 184 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 184 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 184 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n2: 184 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n1: 176 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+                    n1: 176 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+                     n1: 176 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+                      n1: 176 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                       n1: 176 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                        n1: 176 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                         n1: 176 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                          n1: 176 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                           n1: 176 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                            n1: 176 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                             n1: 176 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                              n0: 176 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 8 in 1 place, below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 40 in 3 places, all below massif's threshold (01.00%)
+  n0: 208 in 14 places, all below massif's threshold (01.00%)
+ n3: 1392 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1024 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 1024 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 368 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 368 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 320 0x14FD07: vec::alloc_or_realloc::h13464409806990698699 (vec.rs:1274)
+     n1: 320 0x162551: vec::Vec$LT$T$GT$::push::resize::h18171320702649377088 (vec.rs:644)
+      n1: 320 0x1621CF: vec::Vec$LT$T$GT$::push::h3964153561029104972 (vec.rs:660)
+       n1: 320 0x160950: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1966)
+        n1: 320 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 320 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 320 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 320 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 320 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 320 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 320 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 320 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 320 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 320 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 320 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 320 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 320 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 48 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 2 places, all below massif's threshold (01.00%)
+ n2: 128 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 120 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 120 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 120 0x15602A: vec::Vec$LT$T$GT$::shrink_to_fit::h15554840274446401563 (vec.rs:393)
+     n1: 120 0x155EBD: string::String::shrink_to_fit::h6a32fda6ae133bedpth (string.rs:454)
+      n1: 120 0x155967: string::T.ToString::to_string::h9308370896689623010 (string.rs:1049)
+       n1: 120 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+        n2: 120 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+         n1: 112 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+          n1: 112 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+           n1: 112 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+            n1: 112 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+             n1: 112 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+              n1: 112 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+               n1: 112 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                n1: 112 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                 n1: 112 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                  n1: 112 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 112 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 112 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 112 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n0: 112 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n0: 8 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 8 in 1 place, below massif's threshold (01.00%)
+ n0: 16 in 4 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=26
+#-----------
+time=2988419
+mem_heap_B=7728
+mem_heap_extra_B=488
+mem_stacks_B=0
+heap_tree=detailed
+n4: 7728 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 6184 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 5976 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n3: 5976 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 5760 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 5760 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 5760 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 5760 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 5760 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 5760 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 5120 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 5120 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 5120 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 5120 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 5120 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 5120 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 5120 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 5120 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 5120 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 5120 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 5120 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 5120 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 5120 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 5120 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 184 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 184 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 184 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 184 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 184 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 184 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 184 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 184 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 184 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 184 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 184 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 184 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 184 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 184 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n2: 184 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n1: 176 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+                    n1: 176 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+                     n1: 176 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+                      n1: 176 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                       n1: 176 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                        n1: 176 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                         n1: 176 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                          n1: 176 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                           n1: 176 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                            n1: 176 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                             n1: 176 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                              n0: 176 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 8 in 1 place, below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 32 in 3 places, all below massif's threshold (01.00%)
+  n0: 208 in 14 places, all below massif's threshold (01.00%)
+ n3: 1392 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1024 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 1024 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 368 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 368 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 320 0x14FD07: vec::alloc_or_realloc::h13464409806990698699 (vec.rs:1274)
+     n1: 320 0x162551: vec::Vec$LT$T$GT$::push::resize::h18171320702649377088 (vec.rs:644)
+      n1: 320 0x1621CF: vec::Vec$LT$T$GT$::push::h3964153561029104972 (vec.rs:660)
+       n1: 320 0x160950: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1966)
+        n1: 320 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 320 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 320 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 320 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 320 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 320 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 320 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 320 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 320 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 320 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 320 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 320 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 320 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 48 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 2 places, all below massif's threshold (01.00%)
+ n2: 136 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 128 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 128 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 128 0x15602A: vec::Vec$LT$T$GT$::shrink_to_fit::h15554840274446401563 (vec.rs:393)
+     n1: 128 0x155EBD: string::String::shrink_to_fit::h6a32fda6ae133bedpth (string.rs:454)
+      n1: 128 0x155967: string::T.ToString::to_string::h9308370896689623010 (string.rs:1049)
+       n1: 128 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+        n2: 128 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+         n1: 120 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+          n1: 120 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+           n1: 120 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+            n1: 120 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+             n1: 120 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+              n1: 120 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+               n1: 120 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                n1: 120 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                 n1: 120 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                  n1: 120 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 120 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 120 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 120 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n0: 120 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n0: 8 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 8 in 1 place, below massif's threshold (01.00%)
+ n0: 16 in 4 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=27
+#-----------
+time=3090199
+mem_heap_B=7760
+mem_heap_extra_B=520
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=3225244
+mem_heap_B=8408
+mem_heap_extra_B=536
+mem_stacks_B=0
+heap_tree=detailed
+n4: 8408 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 6848 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 6640 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n3: 6640 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 6400 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 6400 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 6400 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 6400 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 6400 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 6400 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 5760 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 5760 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 5760 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 5760 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 5760 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 5760 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 5760 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 5760 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 5760 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 5760 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 5760 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 5760 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 5760 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 5760 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 208 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 208 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 208 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 208 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 208 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 208 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 208 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 208 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 208 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 208 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 208 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 208 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 208 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 208 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n2: 208 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n1: 200 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+                    n1: 200 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+                     n1: 200 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+                      n1: 200 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                       n1: 200 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                        n1: 200 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                         n1: 200 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                          n1: 200 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                           n1: 200 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                            n1: 200 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                             n1: 200 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                              n0: 200 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 8 in 1 place, below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 32 in 3 places, all below massif's threshold (01.00%)
+  n0: 208 in 14 places, all below massif's threshold (01.00%)
+ n3: 1392 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1024 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 1024 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 368 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 368 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 320 0x14FD07: vec::alloc_or_realloc::h13464409806990698699 (vec.rs:1274)
+     n1: 320 0x162551: vec::Vec$LT$T$GT$::push::resize::h18171320702649377088 (vec.rs:644)
+      n1: 320 0x1621CF: vec::Vec$LT$T$GT$::push::h3964153561029104972 (vec.rs:660)
+       n1: 320 0x160950: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1966)
+        n1: 320 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 320 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 320 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 320 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 320 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 320 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 320 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 320 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 320 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 320 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 320 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 320 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 320 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 48 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 2 places, all below massif's threshold (01.00%)
+ n2: 152 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 144 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 144 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 144 0x15602A: vec::Vec$LT$T$GT$::shrink_to_fit::h15554840274446401563 (vec.rs:393)
+     n1: 144 0x155EBD: string::String::shrink_to_fit::h6a32fda6ae133bedpth (string.rs:454)
+      n1: 144 0x155967: string::T.ToString::to_string::h9308370896689623010 (string.rs:1049)
+       n1: 144 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+        n2: 144 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+         n1: 136 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+          n1: 136 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+           n1: 136 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+            n1: 136 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+             n1: 136 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+              n1: 136 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+               n1: 136 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                n1: 136 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                 n1: 136 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                  n1: 136 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 136 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 136 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 136 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n0: 136 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n0: 8 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 8 in 1 place, below massif's threshold (01.00%)
+ n0: 16 in 4 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=29
+#-----------
+time=3321635
+mem_heap_B=8432
+mem_heap_extra_B=560
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=3377661
+mem_heap_B=9136
+mem_heap_extra_B=568
+mem_stacks_B=0
+heap_tree=peak
+n4: 9136 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 7248 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 7040 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n4: 7040 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 6400 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 6400 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 6400 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 6400 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 6400 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 6400 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 5760 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 5760 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 5760 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 5760 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 5760 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 5760 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 5760 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 5760 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 5760 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 5760 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 5760 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 5760 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 5760 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 5760 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 384 0x14F712: vec::Vec$LT$T$GT$::with_capacity::h6320061032557373430 (vec.rs:222)
+     n1: 384 0x160ECB: vec::Vec$LT$T$GT$.FromIterator$LT$T$GT$::from_iter::h3947936783443210531 (vec.rs:1485)
+      n1: 384 0x160BE1: iter::Iterator::collect::h14665107705020469346 (iter.rs:563)
+       n1: 384 0x160817: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1963)
+        n1: 384 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 384 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 384 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 384 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 384 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 384 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 384 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 384 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 384 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 384 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 384 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 384 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 384 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 224 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 224 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 224 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 224 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 224 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 224 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 224 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 224 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 224 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 224 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 224 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 224 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 224 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 224 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n2: 224 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n1: 216 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+                    n1: 216 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+                     n1: 216 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+                      n1: 216 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                       n1: 216 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                        n1: 216 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                         n1: 216 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                          n1: 216 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                           n1: 216 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                            n1: 216 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                             n1: 216 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                              n0: 216 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 8 in 1 place, below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 32 in 3 places, all below massif's threshold (01.00%)
+  n0: 208 in 14 places, all below massif's threshold (01.00%)
+ n3: 1712 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1024 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n1: 1024 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 688 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 688 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 640 0x14FD07: vec::alloc_or_realloc::h13464409806990698699 (vec.rs:1274)
+     n1: 640 0x162551: vec::Vec$LT$T$GT$::push::resize::h18171320702649377088 (vec.rs:644)
+      n1: 640 0x1621CF: vec::Vec$LT$T$GT$::push::h3964153561029104972 (vec.rs:660)
+       n1: 640 0x160950: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1966)
+        n1: 640 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+         n1: 640 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+          n1: 640 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+           n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+            n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+             n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+              n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 48 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 2 places, all below massif's threshold (01.00%)
+ n2: 160 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 152 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 152 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 152 0x15602A: vec::Vec$LT$T$GT$::shrink_to_fit::h15554840274446401563 (vec.rs:393)
+     n1: 152 0x155EBD: string::String::shrink_to_fit::h6a32fda6ae133bedpth (string.rs:454)
+      n1: 152 0x155967: string::T.ToString::to_string::h9308370896689623010 (string.rs:1049)
+       n1: 152 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+        n2: 152 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+         n1: 144 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+          n1: 144 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+           n1: 144 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+            n1: 144 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+             n1: 144 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+              n1: 144 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+               n1: 144 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                n1: 144 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                 n1: 144 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                  n1: 144 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 144 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 144 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 144 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n0: 144 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n0: 8 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 8 in 1 place, below massif's threshold (01.00%)
+ n0: 16 in 4 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=31
+#-----------
+time=3464220
+mem_heap_B=8504
+mem_heap_extra_B=568
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=3587025
+mem_heap_B=8456
+mem_heap_extra_B=552
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=3718036
+mem_heap_B=8888
+mem_heap_extra_B=544
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=3792754
+mem_heap_B=8224
+mem_heap_extra_B=512
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=3896906
+mem_heap_B=7552
+mem_heap_extra_B=472
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=3989456
+mem_heap_B=7536
+mem_heap_extra_B=456
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=4060836
+mem_heap_B=6872
+mem_heap_extra_B=424
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=4161775
+mem_heap_B=6840
+mem_heap_extra_B=392
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=4288138
+mem_heap_B=6176
+mem_heap_extra_B=360
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=4359522
+mem_heap_B=5512
+mem_heap_extra_B=328
+mem_stacks_B=0
+heap_tree=detailed
+n4: 5512 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n4: 3704 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 3288 0x147732: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n3: 3288 0x147696: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 3200 0x152A28: btree::node::Node$LT$K$C$$u20$V$GT$::new_leaf::h11207799262636428819 (node.rs:329)
+     n1: 3200 0x163080: btree::node::Node$LT$K$C$$u20$V$GT$::make_leaf_root::h2393309351645383503 (node.rs:566)
+      n1: 3200 0x163006: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::with_b::h15378413013973939404 (map.rs:167)
+       n1: 3200 0x162F65: btree::map::BTreeMap$LT$K$C$$u20$V$GT$::new::h6284429290800263985 (map.rs:156)
+        n1: 3200 0x1626E1: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1976)
+         n2: 3200 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+          n1: 2560 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+           n1: 2560 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+            n1: 2560 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+             n1: 2560 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+              n1: 2560 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+               n1: 2560 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                n1: 2560 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                 n1: 2560 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                  n1: 2560 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                   n1: 2560 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 2560 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 2560 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 2560 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n0: 2560 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+           n1: 640 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+            n1: 640 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+             n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+              n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n2: 88 0x14915C: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1272)
+     n1: 88 0x14A553: vec::Vec$LT$T$GT$::grow_capacity::h5527272749359686063 (vec.rs:1259)
+      n1: 88 0x14A430: vec::Vec$LT$T$GT$::reserve::h11419301975701715025 (vec.rs:327)
+       n1: 88 0x14F465: vec::Vec$LT$T$GT$::push_all::h6185650663037468226 (vec.rs:1125)
+        n1: 88 0x155C8F: string::String::push_str::h7c91c16c26082ff7Ash (string.rs:376)
+         n1: 88 0x155BCB: string::String.fmt..Write::write_str::h01ad06739f23de43S0h (string.rs:1132)
+          n1: 88 0x155B5A: fmt::Write::write_fmt::Adapter$LT$$u27$a$C$$u20$T$GT$.Write::write_str::h1497807768606062114 (mod.rs:111)
+           n1: 88 0x1ADA4F: fmt::Formatter$LT$$u27$a$GT$::pad::h22c029a9dcd6604eYnN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+            n1: 88 0x1AD7F3: fmt::str.Display::fmt::heff9bb0ede029861kON (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 88 0x147590: fmt::_$RF$$u27$a$u20$T.Display::fmt::h16627331181858861794 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 88 0x1AFCB3: fmt::write::h8b3627b1498da79bQcN (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 88 0x155AE6: fmt::Write::write_fmt::h4627514421924069977 (mod.rs:119)
+                n1: 88 0x15593E: string::T.ToString::to_string::h9308370896689623010 (string.rs:1048)
+                 n1: 88 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+                  n2: 88 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                   n1: 88 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+                    n1: 88 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+                     n1: 88 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+                      n1: 88 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                       n1: 88 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                        n1: 88 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                         n1: 88 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                          n1: 88 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                           n1: 88 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                            n1: 88 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                             n1: 88 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                              n0: 88 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 0 in 1 place, below massif's threshold (01.00%)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 5 places, all below massif's threshold (01.00%)
+  n1: 208 0x1124D2: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n2: 208 0x112436: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 192 0x13BA52: vec::Vec$LT$T$GT$::with_capacity::h14470596620357191157 (vec.rs:222)
+     n1: 192 0x13B4E0: serialize::Vec$LT$T$GT$.Decodable::decode::closure.5235 (serialize.rs:482)
+      n1: 192 0x13A701: json::Decoder...Decoder::read_seq::h3436735511448202452 (json.rs:2299)
+       n1: 192 0x139934: serialize::Vec$LT$T$GT$.Decodable::decode::h8745992691571164962 (serialize.rs:481)
+        n1: 192 0x139836: fn$LP$$RF$mut$u20$rustc_serialize..json..Decoder$RP$$u20$.$GT$$u20$core..result..Result$LT$collections..vec..Vec$LT$maploader..Cell$GT$$C$$u20$rustc_serialize..json..DecoderError$GT$$u20$$u7b$rustc_serialize..serialize..Decodable..decode$u7d$::fn_pointer_shim.5196::hc2a19dae02a17eb9 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n1: 192 0x1392BE: json::Decoder...Decoder::read_struct_field::h12407745647005632594 (json.rs:2238)
+          n1: 192 0x12B91C: maploader::Map...rustc_serialize..Decodable::decode::closure.4777 (maploader.rs:20)
+           n1: 192 0x12AFAD: json::Decoder...Decoder::read_struct::h6530370943829743979 (json.rs:2212)
+            n1: 192 0x12AEE1: maploader::Map...rustc_serialize..Decodable::decode::h18388876529512014532 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 192 0x12741B: json::decode::h13991741444455250268 (json.rs:368)
+              n1: 192 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 192 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 192 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 192 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 192 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 192 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 192 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 16 in 2 places, all below massif's threshold (01.00%)
+  n0: 144 in 12 places, all below massif's threshold (01.00%)
+  n1: 64 0x173A5C: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 64 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+ n2: 1696 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1664 0x11267D: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 1664 0x1125C2: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 1024 0x1123C7: vec::alloc_or_realloc::h5148061607276079056 (vec.rs:1274)
+     n1: 1024 0x1121D3: vec::Vec$LT$T$GT$::grow_capacity::h9883423499076949681 (vec.rs:1259)
+      n1: 1024 0x111E00: vec::Vec$LT$T$GT$::reserve::h2780794546262565807 (vec.rs:327)
+       n1: 1024 0x125BE4: vec::Vec$LT$T$GT$::extend_desugared::h10994363788123315388 (vec.rs:1573)
+        n1: 1024 0x125AC1: vec::Vec$LT$T$GT$.Extend$LT$T$GT$::extend::h6629702567218379647 (vec.rs:1558)
+         n1: 1024 0x12568F: io::read_to_end::h15361298959585535593 (mod.rs:109)
+          n1: 1024 0x124D86: io::Read::read_to_string::closure.4461 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+           n1: 1024 0x124AA4: io::append_to_string::h10158178815268260903 (mod.rs:80)
+            n1: 1024 0x1249F7: io::Read::read_to_string::h13763430880106834097 (mod.rs:215)
+             n1: 1024 0x123C15: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:50)
+              n1: 1024 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+               n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 640 0x138147: vec::alloc_or_realloc::h14046041491686842223 (vec.rs:1274)
+     n1: 640 0x138001: vec::Vec$LT$T$GT$::push::resize::h8688387934897415567 (vec.rs:644)
+      n1: 640 0x137D3F: vec::Vec$LT$T$GT$::push::h2276989289161423036 (vec.rs:660)
+       n1: 640 0x13A5AB: json::Decoder...Decoder::read_seq::h3436735511448202452 (json.rs:2297)
+        n1: 640 0x139934: serialize::Vec$LT$T$GT$.Decodable::decode::h8745992691571164962 (serialize.rs:481)
+         n1: 640 0x139836: fn$LP$$RF$mut$u20$rustc_serialize..json..Decoder$RP$$u20$.$GT$$u20$core..result..Result$LT$collections..vec..Vec$LT$maploader..Cell$GT$$C$$u20$rustc_serialize..json..DecoderError$GT$$u20$$u7b$rustc_serialize..serialize..Decodable..decode$u7d$::fn_pointer_shim.5196::hc2a19dae02a17eb9 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n1: 640 0x1392BE: json::Decoder...Decoder::read_struct_field::h12407745647005632594 (json.rs:2238)
+           n1: 640 0x12B91C: maploader::Map...rustc_serialize..Decodable::decode::closure.4777 (maploader.rs:20)
+            n1: 640 0x12AFAD: json::Decoder...Decoder::read_struct::h6530370943829743979 (json.rs:2212)
+             n1: 640 0x12AEE1: maploader::Map...rustc_serialize..Decodable::decode::h18388876529512014532 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 640 0x12741B: json::decode::h13991741444455250268 (json.rs:368)
+               n1: 640 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                n1: 640 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                 n1: 640 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 640 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 640 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 640 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n0: 640 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n0: 32 in 3 places, all below massif's threshold (01.00%)
+ n2: 96 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 80 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 80 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 80 0x15602A: vec::Vec$LT$T$GT$::shrink_to_fit::h15554840274446401563 (vec.rs:393)
+     n1: 80 0x155EBD: string::String::shrink_to_fit::h6a32fda6ae133bedpth (string.rs:454)
+      n1: 80 0x155967: string::T.ToString::to_string::h9308370896689623010 (string.rs:1049)
+       n1: 80 0x162B23: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1986)
+        n2: 80 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+         n1: 64 0x16089A: json::Builder$LT$T$GT$::build_array::h9461505166125197604 (json.rs:1965)
+          n1: 64 0x15FE3C: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1949)
+           n1: 64 0x162BBD: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1989)
+            n1: 64 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+             n1: 64 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+              n1: 64 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+               n1: 64 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                n1: 64 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                 n1: 64 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                  n1: 64 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 64 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n1: 64 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                     n1: 64 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n0: 16 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 16 in 2 places, all below massif's threshold (01.00%)
+ n0: 16 in 4 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=41
+#-----------
+time=4464729
+mem_heap_B=5488
+mem_heap_extra_B=304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=4539449
+mem_heap_B=4824
+mem_heap_extra_B=272
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=4638192
+mem_heap_B=4144
+mem_heap_extra_B=224
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=4763411
+mem_heap_B=4128
+mem_heap_extra_B=208
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=4854826
+mem_heap_B=3448
+mem_heap_extra_B=160
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=4912740
+mem_heap_B=3448
+mem_heap_extra_B=160
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=5012602
+mem_heap_B=1480
+mem_heap_extra_B=88
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=5146317
+mem_heap_B=456
+mem_heap_extra_B=80
+mem_stacks_B=0
+heap_tree=detailed
+n5: 456 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n8: 400 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 192 0x1124D2: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n2: 192 0x112436: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 192 0x13BA52: vec::Vec$LT$T$GT$::with_capacity::h14470596620357191157 (vec.rs:222)
+     n1: 192 0x13B4E0: serialize::Vec$LT$T$GT$.Decodable::decode::closure.5235 (serialize.rs:482)
+      n1: 192 0x13A701: json::Decoder...Decoder::read_seq::h3436735511448202452 (json.rs:2299)
+       n1: 192 0x139934: serialize::Vec$LT$T$GT$.Decodable::decode::h8745992691571164962 (serialize.rs:481)
+        n1: 192 0x139836: fn$LP$$RF$mut$u20$rustc_serialize..json..Decoder$RP$$u20$.$GT$$u20$core..result..Result$LT$collections..vec..Vec$LT$maploader..Cell$GT$$C$$u20$rustc_serialize..json..DecoderError$GT$$u20$$u7b$rustc_serialize..serialize..Decodable..decode$u7d$::fn_pointer_shim.5196::hc2a19dae02a17eb9 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n1: 192 0x1392BE: json::Decoder...Decoder::read_struct_field::h12407745647005632594 (json.rs:2238)
+          n1: 192 0x12B91C: maploader::Map...rustc_serialize..Decodable::decode::closure.4777 (maploader.rs:20)
+           n1: 192 0x12AFAD: json::Decoder...Decoder::read_struct::h6530370943829743979 (json.rs:2212)
+            n1: 192 0x12AEE1: maploader::Map...rustc_serialize..Decodable::decode::h18388876529512014532 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 192 0x12741B: json::decode::h13991741444455250268 (json.rs:368)
+              n1: 192 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 192 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 192 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 192 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 192 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 192 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 192 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 0 in 2 places, all below massif's threshold (01.00%)
+  n1: 64 0x173A5C: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 64 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 48 0x173ADE: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 48 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 48 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 32 0x174615: vec::Vec$LT$T$GT$.Clone::clone::h2850174191623772814 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 32 0x17CA99: vec::Vec$LT$T$GT$.Clone::clone::h6305975704494102398 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 32 0x17C72B: rt::args::imp::put::h3539fa7c33b8ec7fJUw (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+     n1: 32 0x17C044: rt::args::init::h3774a96c7468c2ebvSw (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+      n1: 32 0x17D2AA: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+       n0: 32 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 32 0x173A06: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 32 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 32 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 16 0x17C6CF: rt::args::imp::put::h3539fa7c33b8ec7fJUw (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 16 0x17C044: rt::args::init::h3774a96c7468c2ebvSw (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 16 0x17D2AA: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+     n0: 16 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 16 0x17CA28: vec::Vec$LT$T$GT$.Clone::clone::h6305975704494102398 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 16 0x17C72B: rt::args::imp::put::h3539fa7c33b8ec7fJUw (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 16 0x17C044: rt::args::init::h3774a96c7468c2ebvSw (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+     n1: 16 0x17D2AA: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+      n0: 16 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n0: 0 in 8 places, all below massif's threshold (01.00%)
+ n2: 32 0x18929F: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 32 0x1492ED: heap::imp::reallocate::h0b540310dd61976f9ha (heap.rs:255)
+   n2: 32 0x149232: heap::reallocate::hf39c4a985737dad15ca (heap.rs:58)
+    n1: 32 0x1491A7: vec::alloc_or_realloc::h16185565019835463827 (vec.rs:1274)
+     n1: 32 0x148F91: vec::Vec$LT$T$GT$::push::resize::h2167360315525609322 (vec.rs:644)
+      n2: 32 0x148CC4: vec::Vec$LT$T$GT$::push::h6318681719622103557 (vec.rs:660)
+       n1: 32 0x15DFF5: string::String::push::h94d8c46b59927bffyth (string.rs:472)
+        n1: 32 0x15DDE0: json::Parser$LT$T$GT$::parse_str::h10482385346779533401 (json.rs:1678)
+         n1: 32 0x15B30F: json::Parser$LT$T$GT$::parse_value::h11005226140526074650 (json.rs:1876)
+          n1: 32 0x15F754: json::Parser$LT$T$GT$::parse_object::h5180400764297486380 (json.rs:1840)
+           n1: 32 0x15AE1D: json::Parser$LT$T$GT$::parse::h17014932054911386466 (json.rs:1715)
+            n1: 32 0x15A715: json::Parser$LT$T$GT$.Iterator::next::h11204426797657340194 (json.rs:1390)
+             n1: 32 0x15A557: json::Builder$LT$T$GT$::bump::h4405176734369159315 (json.rs:1933)
+              n1: 32 0x1626D0: json::Builder$LT$T$GT$::build_object::h1832934380029257401 (json.rs:1974)
+               n1: 32 0x15FE5F: json::Builder$LT$T$GT$::build_value::h8122210927976418079 (json.rs:1950)
+                n1: 32 0x15A186: json::Builder$LT$T$GT$::build::h307917069410374742 (json.rs:1922)
+                 n1: 32 0x16BE3F: json::Json::from_str::h5991b4424bc3e080gcl (json.rs:958)
+                  n1: 32 0x12719C: json::decode::h13991741444455250268 (json.rs:362)
+                   n1: 32 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+                    n1: 32 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                     n1: 32 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                      n1: 32 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                       n1: 32 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                        n1: 32 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                         n0: 32 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+       n0: 0 in 1 place, below massif's threshold (01.00%)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 3 places, all below massif's threshold (01.00%)
+ n1: 16 0x48B1674: __cxa_thread_atexit_impl (cxa_thread_atexit_impl.c:46)
+  n1: 16 0x1733B8: thread::local::imp::register_dtor::h8c48c30ec7ce481bgkb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 16 0x1776C2: sys_common::thread_info::set::h49402b4b7d231ea8fwr (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 16 0x17D273: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+     n0: 16 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+ n2: 8 0x1893DF: je_rallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 8 0x173042: string::T.ToString::to_string::h14029363708413975501 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 8 0x17D22D: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 8 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n0: 0 in 2 places, all below massif's threshold (01.00%)
+ n0: 0 in 3 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=49
+#-----------
+time=5176280
+mem_heap_B=3032
+mem_heap_extra_B=96
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=5723436
+mem_heap_B=4576
+mem_heap_extra_B=112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=5771312
+mem_heap_B=5792
+mem_heap_extra_B=184
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=5811083
+mem_heap_B=5760
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=5894742
+mem_heap_B=5760
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=6009853
+mem_heap_B=5760
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=6236912
+mem_heap_B=5760
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=detailed
+n2: 5760 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n5: 5672 0x1881C1: je_mallocx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 2560 0x17E871: rand::thread_rng::THREAD_RNG_KEY::__init::hb29191937c04d577arx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 2560 0x1740D6: rand::thread_rng::hec18732ee7a4f009Pqx (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 2560 0x116F01: collections::hash::map::RandomState::new::h7c7a810f3ab55587Btd (map.rs:1612)
+     n1: 2560 0x116EAE: collections::hash::map::RandomState.Default::default::h9a5b21517a9e47e9bud (map.rs:1631)
+      n1: 2560 0x115D4B: collections::hash::map::HashMap$LT$K$C$$u20$V$C$$u20$S$GT$.Default::default::h8040310548702506467 (map.rs:1234)
+       n1: 2560 0x115CEE: collections::hash::map::HashMap$LT$K$C$$u20$V$C$$u20$RandomState$GT$::new::h17197630624201056164 (map.rs:518)
+        n1: 2560 0x115C9E: gridmap::GridMap::new::h15cae189d8ee7c8eaka (gridmap.rs:17)
+         n1: 2560 0x122221: gridmap::GridMap::load::hdcb79a57da1096f0Eoa (gridmap.rs:67)
+          n1: 2560 0x14671A: gameboard::GameBoard::load::hfb975e22789e26cb4Ha (gameboard.rs:25)
+           n1: 2560 0x10C52A: main::hb77060fc887668a4jaa (main.rs:17)
+            n1: 2560 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 2560 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 2560 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 2560 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n0: 2560 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n1: 1728 0x1124D2: heap::imp::allocate::h042b995417e392afJha (heap.rs:249)
+   n3: 1728 0x112436: heap::allocate::h13906f1d9bbc8c3eLca (heap.rs:38)
+    n1: 1536 0x116338: collections::hash::table::RawTable$LT$K$C$$u20$V$GT$::new_uninitialized::h3886450736862191445 (table.rs:613)
+     n1: 1536 0x115E71: collections::hash::table::RawTable$LT$K$C$$u20$V$GT$::new::h10069944020763669354 (table.rs:650)
+      n1: 1536 0x11E0C0: collections::hash::map::HashMap$LT$K$C$$u20$V$C$$u20$S$GT$::resize::h17021147811985057868 (map.rs:651)
+       n1: 1536 0x11DC3A: collections::hash::map::HashMap$LT$K$C$$u20$V$C$$u20$S$GT$::reserve::h16702790508803211965 (map.rs:639)
+        n1: 1536 0x11D9F5: collections::hash::map::HashMap$LT$K$C$$u20$V$C$$u20$S$GT$::insert::h10729778570011097279 (map.rs:1117)
+         n1: 1536 0x11D87F: gridmap::GridMap::add::h568ba9f6bc1c451dVka (gridmap.rs:36)
+          n1: 1536 0x12236D: gridmap::GridMap::load::hdcb79a57da1096f0Eoa (gridmap.rs:70)
+           n1: 1536 0x14671A: gameboard::GameBoard::load::hfb975e22789e26cb4Ha (gameboard.rs:25)
+            n1: 1536 0x10C52A: main::hb77060fc887668a4jaa (main.rs:17)
+             n1: 1536 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+              n1: 1536 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+               n1: 1536 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                n1: 1536 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n0: 1536 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 192 0x13BA52: vec::Vec$LT$T$GT$::with_capacity::h14470596620357191157 (vec.rs:222)
+     n1: 192 0x13B4E0: serialize::Vec$LT$T$GT$.Decodable::decode::closure.5235 (serialize.rs:482)
+      n1: 192 0x13A701: json::Decoder...Decoder::read_seq::h3436735511448202452 (json.rs:2299)
+       n1: 192 0x139934: serialize::Vec$LT$T$GT$.Decodable::decode::h8745992691571164962 (serialize.rs:481)
+        n1: 192 0x139836: fn$LP$$RF$mut$u20$rustc_serialize..json..Decoder$RP$$u20$.$GT$$u20$core..result..Result$LT$collections..vec..Vec$LT$maploader..Cell$GT$$C$$u20$rustc_serialize..json..DecoderError$GT$$u20$$u7b$rustc_serialize..serialize..Decodable..decode$u7d$::fn_pointer_shim.5196::hc2a19dae02a17eb9 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n1: 192 0x1392BE: json::Decoder...Decoder::read_struct_field::h12407745647005632594 (json.rs:2238)
+          n1: 192 0x12B91C: maploader::Map...rustc_serialize..Decodable::decode::closure.4777 (maploader.rs:20)
+           n1: 192 0x12AFAD: json::Decoder...Decoder::read_struct::h6530370943829743979 (json.rs:2212)
+            n1: 192 0x12AEE1: maploader::Map...rustc_serialize..Decodable::decode::h18388876529512014532 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+             n1: 192 0x12741B: json::decode::h13991741444455250268 (json.rs:368)
+              n1: 192 0x123E6C: maploader::Map::load::h4afbad13bcab31fcECa (maploader.rs:51)
+               n1: 192 0x10C26C: main::hb77060fc887668a4jaa (main.rs:11)
+                n1: 192 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                 n1: 192 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                  n1: 192 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                   n1: 192 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+                    n0: 192 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 0 in 2 places, all below massif's threshold (01.00%)
+  n1: 1024 0x176187: io::stdio::stdout::stdout_init::hbba132969438b547xWg (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 1024 0x1759B1: io::stdio::stdout::h178d7f526ac30ac1aWg (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n1: 1024 0x177401: io::stdio::_print::h0011ddb4c9c81ee7X3g (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+     n1: 1024 0x10C8A2: main::hb77060fc887668a4jaa (<std macros>:2)
+      n1: 1024 0x17D5F9: rt::unwind::try::try_fn::h11282234335578041262 (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+       n1: 1024 0x180729: rust_try_inner (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+        n1: 1024 0x180702: rust_try (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+         n1: 1024 0x17D309: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+          n0: 1024 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+  n0: 296 in 20 places, all below massif's threshold (01.00%)
+  n1: 64 0x173A5C: thread::Thread::new::h85a89df4ebb8ec3cVBb (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+   n1: 64 0x17D261: rt::lang_start::h360ebe0394cbf4d5A3w (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+    n0: 64 0x110CD4: main (in /home/seb/workspace/rust/own/cargo-bot/target/debug/cargo-bot)
+ n0: 88 in 6 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=56
+#-----------
+time=6720670
+mem_heap_B=5760
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=6863359
+mem_heap_B=5752
+mem_heap_extra_B=168
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=6894759
+mem_heap_B=2760
+mem_heap_extra_B=64
+mem_stacks_B=0
+heap_tree=empty
