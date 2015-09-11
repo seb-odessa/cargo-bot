@@ -1,15 +1,12 @@
-//use std::rc::Rc;
-//use std::cell::RefCell;
 use std::collections::HashMap;
-
-use gridcell::{Id, GridCell, Neighbor};
+use gridcell::{Id, GridCell, Way};
 use maploader::Map;
 
 
 #[allow(dead_code)] 
 #[derive(Debug)]
-pub struct GridMap	{
-	pub cells			: HashMap<Id, GridCell>,
+pub struct GridMap {
+	pub cells : HashMap<Id, GridCell>,
 }
 impl GridMap {
 	#[allow(dead_code)] 
@@ -33,15 +30,14 @@ impl GridMap {
 	#[allow(dead_code)]
 	fn add(&mut self, cell : GridCell) {
 		self.ensure_new(cell.id);
-		self.cells.insert(cell.id, cell);		
+		self.cells.insert(cell.id, cell);
 	}
 
 	#[allow(dead_code)]
-	fn add_neighbor(&mut self, lhv : Id, rhv : Id, neighbor : Neighbor) -> () {
-		// link neighbor according to direction
+	fn add_way(&mut self, lhv : Id, rhv : Id, way : Way) -> () {
 		self.ensure_exist(lhv);
 		self.ensure_exist(rhv);
-		self.cells.get_mut(&lhv).unwrap().add_neighbor(neighbor, rhv);
+		self.cells.get_mut(&lhv).unwrap().add(way, rhv);
 	}
 
 	#[allow(dead_code)]
@@ -57,7 +53,7 @@ impl GridMap {
 	#[allow(dead_code)]
 	pub fn print_map(&self){
 		for (key, cell) in self.cells.iter() {
-				println!("{:2}: {}", key, cell);
+				println!("{:2}: {}\n", key, cell);
 		}
 	}
 
@@ -73,16 +69,16 @@ impl GridMap {
 		// Link all cells in the map
 		for cell in map.cells.iter() {
 			if cell.north > 0 {
-				grid.add_neighbor(cell.id, cell.north, Neighbor::North);
+				grid.add_way(cell.id, cell.north, Way::North);
 			}
 			if cell.south > 0 {
-				grid.add_neighbor(cell.id, cell.south, Neighbor::South);
+				grid.add_way(cell.id, cell.south, Way::South);
 			}
 			if cell.west > 0 {
-				grid.add_neighbor(cell.id, cell.west, Neighbor::West);
+				grid.add_way(cell.id, cell.west, Way::West);
 			}
 			if cell.east > 0 {
-				grid.add_neighbor(cell.id, cell.east, Neighbor::East);
+				grid.add_way(cell.id, cell.east, Way::East);
 			}
 		}
       
@@ -92,7 +88,7 @@ impl GridMap {
 
 #[cfg(test)]
 mod tests {
-	use gridcell::{GridCell, Neighbor};
+	use gridcell::{GridCell, Way};
 	use gridmap::GridMap;
 
 	#[test] 
@@ -142,45 +138,45 @@ mod tests {
 	}
 
 	#[test]
-	pub fn add_north_neighbor() {
+	pub fn add_north() {
 		let mut grid = GridMap::new();
 		grid.add(GridCell::new(1));
 		grid.add(GridCell::new(2));
-		grid.add_neighbor(1, 2, Neighbor::North);
-		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::North).unwrap(), 2);
+		grid.add_way(1, 2, Way::North);
+		assert_eq!(grid.cells.get(&1).unwrap().get(Way::North).unwrap(), 2);
 	}
 
 	#[test]
-	pub fn add_south_neighbor() {
+	pub fn add_south() {
 		let mut grid = GridMap::new();
 		grid.add(GridCell::new(1));
 		grid.add(GridCell::new(2));
-		grid.add_neighbor(1, 2, Neighbor::South);
-		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::South).unwrap(), 2);
+		grid.add_way(1, 2, Way::South);
+		assert_eq!(grid.cells.get(&1).unwrap().get(Way::South).unwrap(), 2);
 	}
 
 	#[test]
-	pub fn add_east_neighbor() {
+	pub fn add_east() {
 		let mut grid = GridMap::new();
 		grid.add(GridCell::new(1));
 		grid.add(GridCell::new(2));
-		grid.add_neighbor(1, 2, Neighbor::East);
-		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::East).unwrap(), 2);
+		grid.add_way(1, 2, Way::East);
+		assert_eq!(grid.cells.get(&1).unwrap().get(Way::East).unwrap(), 2);
 	}
 
 	#[test]
-	pub fn add_west_neighbor() {
+	pub fn add_west() {
 		let mut grid = GridMap::new();
 		grid.add(GridCell::new(1));
 		grid.add(GridCell::new(2));
-		grid.add_neighbor(1, 2, Neighbor::West);
-		assert_eq!(grid.cells.get(&1).unwrap().get_neighbor(Neighbor::West).unwrap(), 2);
+		grid.add_way(1, 2, Way::West);
+		assert_eq!(grid.cells.get(&1).unwrap().get(Way::West).unwrap(), 2);
 	}
 }
 
 #[cfg(test)]
 mod panic {
-	use gridcell::GridCell;	
+	use gridcell::GridCell;
 	use gridmap::GridMap;
 
 	#[test]

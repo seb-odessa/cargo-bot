@@ -1,7 +1,7 @@
 [package]
 
 name = "cargo-bot"
-version = "0.2.4"
+version = "0.2.5"
 authors = ["seb <seb@ukr.net>"]
 
 [profile.dev]

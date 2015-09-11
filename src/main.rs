@@ -2,9 +2,9 @@
 extern crate lib;
 
 use lib::maploader::Map;
-use lib::gridcell::Neighbor;
+use lib::gridcell::Way;
 use lib::gameboard::GameBoard;
-use lib::gameboard::Command;
+
 
 macro_rules! do_or_die {
         ($expr:expr) => (match $expr {
@@ -19,11 +19,10 @@ fn main(){
 
     let mut game : GameBoard = GameBoard::load(&map, 1, 9);
 
-    let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East];
+    let route = vec![Way::South, Way::South, Way::East, Way::East];
 
     println!("board.is_complete() => {:?}", game.play(route));
 
     do_or_die!(Map::save("/tmp/the_map.json", &map));
 
-    println!("{:?}", game);
 }

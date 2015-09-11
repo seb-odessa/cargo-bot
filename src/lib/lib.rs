@@ -8,7 +8,7 @@
 //! extern crate lib;
 //! 
 //! use lib::maploader::Map;
-//! use lib::gridcell::Neighbor;
+//! use lib::gridcell::Way;
 //! use lib::gameboard::GameBoard;
 //! use lib::gameboard::Command;
 //! 
@@ -17,11 +17,11 @@
 //!     let map : Map = Map::demo_map();
 //!     let mut board : GameBoard = GameBoard::load(&map, 1, 9);
 //!
-//!     let route = vec![Neighbor::South,Neighbor::South,Neighbor::East,Neighbor::East,];
+//!     let route = vec![Way::South, Way::South, Way::East, Way::East];
 //!     for dir in &route {
 //!         println!("board.execute(Command::Move, {:?}) => {}", *dir, board.execute(Command::Move, *dir));
 //!     }
-//!     println!("board.is_complete() => {:?}", board.is_complete());          
+//!     println!("board.is_complete() => {:?}", board.is_complete());
 //! }
 //! ```
 //!
@@ -41,7 +41,7 @@
 
 
 
-pub use self::gridcell::{Id, GridCell, Neighbor};
+pub use self::gridcell::{Id, GridCell, Way};
 pub use self::gridmap::GridMap;
 pub use self::maploader::Map;
 pub use self::gameboard::GameBoard;

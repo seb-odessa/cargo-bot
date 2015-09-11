@@ -1,5 +1,5 @@
 use maploader::Map;
-use gridcell::{Id, Neighbor};
+use gridcell::{Id, Way};
 use gridmap::GridMap;
 
 #[derive(Debug)]
@@ -18,7 +18,7 @@ pub struct GameBoard {
 	steps  : usize,
 }
 
-pub type Route = Vec<Neighbor>;
+pub type Route = Vec<Way>;
 
 impl GameBoard {
 
@@ -41,7 +41,7 @@ impl GameBoard {
 	}
 
 	#[allow(dead_code)] 
-	pub fn execute(&mut self, cmd : Command, dir : Neighbor) -> bool {
+	pub fn execute(&mut self, cmd : Command, dir : Way) -> bool {
 		let is_ok = match cmd {
 			Command::Move => self.do_move(dir),
 			Command::Stop => false,
@@ -50,12 +50,12 @@ impl GameBoard {
 	}
 
 	#[allow(dead_code)] 
-	fn do_move(&mut self, dir : Neighbor) -> bool {
+	fn do_move(&mut self, dir : Way) -> bool {
         let curr_pos = self.map.find(self.current);
         if curr_pos.is_none() { 
             return false; 
         }
-        let next = curr_pos.unwrap().get_neighbor(dir);
+        let next = curr_pos.unwrap().get(dir);
         if next.is_none() {
             return false;
         }
