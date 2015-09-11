@@ -2,6 +2,8 @@
 
 rev=$(git rev-parse --short HEAD)
 
+cargo doc 
+
 cd target/doc
 
 git init

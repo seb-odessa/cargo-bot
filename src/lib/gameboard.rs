@@ -1,68 +1,59 @@
 use maploader::Map;
 use gridcell::{Id, Way};
 use gridmap::GridMap;
+use std::fmt;
 
-#[derive(Debug)]
-pub enum Command { 
-	Move,
-	Stop,
-}
-
+pub type Route = Vec<Way>;
 
 #[allow(dead_code)] 
 #[derive(Debug)]
-pub struct GameBoard {	
+pub struct GameBoard {
 	map    : GridMap,
 	current: Id,
-	finish : Id,
+	target : Id,
 	steps  : usize,
 }
 
-pub type Route = Vec<Way>;
+impl fmt::Display for GameBoard {
+    #[allow(unused_must_use)]
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        try!(write!(f, "{}\n", self.map));
+        try!(write!(f, "current : {}\n", self.current));
+        try!(write!(f, "target : {}\n", self.target));
+        write!(f, "steps : {}\n", self.steps)
+    }
+}
 
 impl GameBoard {
 
 	#[allow(dead_code)] 
-	pub fn load(map : &Map, start : Id, finish : Id) -> GameBoard {
-		GameBoard { map : GridMap::load(map), current : start, finish : finish, steps : 0 } 
+	pub fn load(map : &Map) -> GameBoard {
+		GameBoard { map : GridMap::load(map), current : map.start, target : map.target, steps : 0 } 
 	}
 
 	#[allow(dead_code)] 
-	pub fn play(&mut self, route : Route) -> bool {
-	    for dir in &route {
-            self.execute(Command::Move, *dir);
+	pub fn run(&mut self, route : Route) -> bool {
+	    for way in &route {
+            self.goto(way);
         }
         return self.is_complete()
 	}
 
 	#[allow(dead_code)] 
 	pub fn is_complete(&self) -> bool {
-		self.current == self.finish
+		self.current == self.target
 	}
 
 	#[allow(dead_code)] 
-	pub fn execute(&mut self, cmd : Command, dir : Way) -> bool {
-		let is_ok = match cmd {
-			Command::Move => self.do_move(dir),
-			Command::Stop => false,
-		};
-        return is_ok && !self.is_complete()
-	}
-
-	#[allow(dead_code)] 
-	fn do_move(&mut self, dir : Way) -> bool {
-        let curr_pos = self.map.find(self.current);
-        if curr_pos.is_none() { 
-            return false; 
+	pub fn goto(&mut self, way : &Way) -> bool {
+        if let Some(current) = self.map.find(self.current) {
+            if let Some(next) = current.get(*way) {
+                self.current = next;
+                self.steps = self.steps + 1;
+                return true;
+            }
         }
-        let next = curr_pos.unwrap().get(dir);
-        if next.is_none() {
-            return false;
-        }
-     
-        self.current = next.unwrap(); 
-        self.steps = self.steps + 1;
-        return true;
+        return false;
 	}
 }
 
@@ -75,20 +66,21 @@ mod tests {
     #[test] 
     pub fn load()
     {
-        let board = GameBoard::load(&Map::demo_map(), 1, 9);
+        let board = GameBoard::load(&Map::demo_map());
         assert![board.current == 1];
-        assert![board.finish == 9];
+        assert![board.target == 9];
     }
 
     #[test] 
     pub fn is_complete() {
-    	let board = GameBoard::load(&Map::demo_map(), 1, 1);
+    	let mut board = GameBoard::load(&Map::demo_map());
+        board.current = board.target;
     	assert![board.is_complete()];
     }
 
     #[test] 
     pub fn is_not_complete() {
-    	let board = GameBoard::load(&Map::demo_map(), 1, 9);
+    	let board = GameBoard::load(&Map::demo_map());
     	assert![!board.is_complete()];
     }
 }

@@ -18,7 +18,7 @@ pub struct Cell {
 pub struct Map { 
     pub name : String, 
     pub cells : Vec<Cell>, 
-    pub begin : usize,
+    pub start  : usize,
     pub target : usize,
 }
 
@@ -56,7 +56,7 @@ impl Map {
                     Cell{ id:8, north:0, south:0, east:9, west:7 },
                     Cell{ id:9, north:6, south:0, east:0, west:8 }
                 ], 
-            begin : 1,
+            start : 1,
             target : 9,
         }
     }

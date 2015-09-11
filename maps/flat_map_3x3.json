@@ -12,6 +12,6 @@
         {"id" : 8, "north" : 0, "south" : 0, "east" : 9, "west" : 7 },
         {"id" : 9, "north" : 6, "south" : 0, "east" : 0, "west" : 8 }
     ],
-    "begin" : 1,
+    "start" : 1,
     "target" : 9
 }

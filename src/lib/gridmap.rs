@@ -1,12 +1,23 @@
 use std::collections::HashMap;
 use gridcell::{Id, GridCell, Way};
 use maploader::Map;
+use std::fmt;
 
 
 #[allow(dead_code)] 
 #[derive(Debug)]
 pub struct GridMap {
 	pub cells : HashMap<Id, GridCell>,
+}
+impl fmt::Display for GridMap {
+    #[allow(unused_must_use)]
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+	for (id, cell) in self.cells.iter() {
+	    try!(writeln!(f, "{:4}{}", id, cell));
+	}
+	write!(f, "")
+
+    }
 }
 impl GridMap {
 	#[allow(dead_code)] 
@@ -28,7 +39,7 @@ impl GridMap {
 	}
 
 	#[allow(dead_code)]
-	fn add(&mut self, cell : GridCell) {
+	fn add_cell(&mut self, cell : GridCell) {
 		self.ensure_new(cell.id);
 		self.cells.insert(cell.id, cell);
 	}
@@ -60,29 +71,28 @@ impl GridMap {
 	#[allow(dead_code)]
 	pub fn load(map : &Map) -> GridMap
 	{
-        let mut grid = GridMap::new();
-		// Add all cells to the storage
-		for cell in map.cells.iter() {
-			grid.add(GridCell::new(cell.id));
-		}
+	    let mut grid = GridMap::new();
+
+	    for cell in map.cells.iter() {
+	        grid.add_cell(GridCell::new(cell.id));
+	    }
       
-		// Link all cells in the map
-		for cell in map.cells.iter() {
-			if cell.north > 0 {
-				grid.add_way(cell.id, cell.north, Way::North);
-			}
-			if cell.south > 0 {
-				grid.add_way(cell.id, cell.south, Way::South);
-			}
-			if cell.west > 0 {
-				grid.add_way(cell.id, cell.west, Way::West);
-			}
-			if cell.east > 0 {
-				grid.add_way(cell.id, cell.east, Way::East);
-			}
-		}
+	    for cell in map.cells.iter() {
+		    if cell.north > 0 {
+			    grid.add_way(cell.id, cell.north, Way::North);
+    		}
+    		if cell.south > 0 {
+	    		grid.add_way(cell.id, cell.south, Way::South);
+    		}
+    		if cell.west > 0 {
+    			grid.add_way(cell.id, cell.west, Way::West);
+    		}
+    		if cell.east > 0 {
+    			grid.add_way(cell.id, cell.east, Way::East);
+    		}
+	    }
       
-	return grid;
+	    return grid;
     }
 }
 
@@ -100,35 +110,35 @@ mod tests {
 	#[test] 
 	pub fn add_cell() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
+		grid.add_cell(GridCell::new(1));
 		assert_eq!(grid.cells.len(), 1);
 	}
 
 	#[test]
 	pub fn exist() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
+		grid.add_cell(GridCell::new(1));
 		assert![grid.exist(1)];
 	}
 
 	#[test]
 	pub fn find_existing() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
+		grid.add_cell(GridCell::new(1));
 		assert![grid.find(1).is_some()];
 	}
 
 	#[test]
 	pub fn find_absent() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
+		grid.add_cell(GridCell::new(1));
 		assert![grid.find(2).is_none()];
 	}
 
 	#[test]
 	pub fn ensure_exist() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
+		grid.add_cell(GridCell::new(1));
 		grid.ensure_exist(1);
 	}
 
@@ -140,8 +150,8 @@ mod tests {
 	#[test]
 	pub fn add_north() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
-		grid.add(GridCell::new(2));
+		grid.add_cell(GridCell::new(1));
+		grid.add_cell(GridCell::new(2));
 		grid.add_way(1, 2, Way::North);
 		assert_eq!(grid.cells.get(&1).unwrap().get(Way::North).unwrap(), 2);
 	}
@@ -149,8 +159,8 @@ mod tests {
 	#[test]
 	pub fn add_south() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
-		grid.add(GridCell::new(2));
+		grid.add_cell(GridCell::new(1));
+		grid.add_cell(GridCell::new(2));
 		grid.add_way(1, 2, Way::South);
 		assert_eq!(grid.cells.get(&1).unwrap().get(Way::South).unwrap(), 2);
 	}
@@ -158,8 +168,8 @@ mod tests {
 	#[test]
 	pub fn add_east() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
-		grid.add(GridCell::new(2));
+		grid.add_cell(GridCell::new(1));
+		grid.add_cell(GridCell::new(2));
 		grid.add_way(1, 2, Way::East);
 		assert_eq!(grid.cells.get(&1).unwrap().get(Way::East).unwrap(), 2);
 	}
@@ -167,8 +177,8 @@ mod tests {
 	#[test]
 	pub fn add_west() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
-		grid.add(GridCell::new(2));
+		grid.add_cell(GridCell::new(1));
+		grid.add_cell(GridCell::new(2));
 		grid.add_way(1, 2, Way::West);
 		assert_eq!(grid.cells.get(&1).unwrap().get(Way::West).unwrap(), 2);
 	}
@@ -189,7 +199,7 @@ mod panic {
 	#[should_panic]
 	pub fn ensure_new() {
 		let mut grid = GridMap::new();
-		grid.add(GridCell::new(1));
+		grid.add_cell(GridCell::new(1));
 		grid.ensure_new(1);
 	}
 }

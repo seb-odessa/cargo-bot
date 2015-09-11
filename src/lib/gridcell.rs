@@ -42,7 +42,7 @@ macro_rules! fmt_id{
     (& $expr : expr) => (
         match $expr { 
 	    Some(ref cell) => format!("{}", cell),
-	    None => "_".to_string()
+	    None => "".to_string()
         }
     )
 }
