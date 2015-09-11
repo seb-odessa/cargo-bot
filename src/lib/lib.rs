@@ -40,7 +40,6 @@
 //! 
 
 
-
 pub use self::gridcell::{Id, GridCell, Way};
 pub use self::gridmap::GridMap;
 pub use self::maploader::Map;
