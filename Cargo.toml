@@ -28,4 +28,4 @@ name = "cargo-bot"
 path = "src/main.rs"
 
 [dependencies]
-rustc-serialize = "*"
+rustc-serialize = "0.3.16"
